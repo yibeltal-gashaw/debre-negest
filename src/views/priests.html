@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DEBRE NEGEST - Priests</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="navbar">
+      <a href="index.html">Dashboard</a>
+      <a href="deacons.html">Deacons</a>
+      <a href="sundaySchool.html">Sunday School</a>
+      <a href="servants.html">Servants</a>
+    </div>
+    <div class="card">
+      <h2>Priests Management</h2>
+      <input type="text" id="search" placeholder="Search priests..." onkeyup="loadPriests()">
+      <div id="admin-controls" style="display: none;">
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="contact_info" placeholder="Contact Info">
+        <input type="text" id="assignment" placeholder="Assignment">
+        <textarea id="service_history" placeholder="Service History"></textarea>
+        <button onclick="addPriest()">Add Priest</button>
+      </div>
+      <table id="priests-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Contact Info</th>
+            <th>Assignment</th>
+            <th>Service History</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button onclick="generateReport('priests', 'pdf')">Generate PDF Report</button>
+      <button onclick="generateReport('priests', 'excel')">Generate Excel Report</button>
+    </div>
+  </div>
+  <script>
+    const { addPriest, getPriests, updatePriest, deletePriest } = require('../js/priests');
+    const { generatePDFReport, generateExcelReport } = require('../js/reports');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.getItem('role') === 'admin') {
+        document.getElementById('admin-controls').style.display = 'block';
+      }
+      loadPriests();
+    });
+
+    function loadPriests() {
+      const search = document.getElementById('search').value;
+      getPriests(search, (err, priests) => {
+        const tbody = document.querySelector('#priests-table tbody');
+        tbody.innerHTML = '';
+        priests.forEach(priest => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${priest.name}</td>
+            <td>${priest.contact_info}</td>
+            <td>${priest.assignment}</td>
+            <td>${priest.service_history}</td>
+            <td>
+              ${localStorage.getItem('role') === 'admin' ? `
+                <button onclick="editPriest(${priest.id})">Edit</button>
+                <button onclick="deletePriest(${priest.id})">Delete</button>
+              ` : ''}
+            </td>
+          `;
+          tbody.appendChild(row);
+        });
+      });
+    }
+
+    function addPriest() {
+      const data = {
+        name: document.getElementById('name').value,
+        contact_info: document.getElementById('contact_info').value,
+        assignment: document.getElementById('assignment').value,
+        service_history: document.getElementById('service_history').value
+      };
+      addPriest(data, () => {
+        loadPriests();
+        clearForm();
+      });
+    }
+
+    function editPriest(id) {
+      // Implement edit functionality
+    }
+
+    function deletePriest(id) {
+      if (confirm('Are you sure?')) {
+        deletePriest(id, loadPriests);
+      }
+    }
+
+    function generateReport(table, format) {
+      if (format === 'pdf') {
+        generatePDFReport(table, (err, filePath) => {
+          if (!err) alert(`Report generated: ${filePath}`);
+        });
+      } else {
+        generateExcelReport(table, (err, filePath) => {
+          if (!err) alert(`Report generated: ${filePath}`);
+        });
+      }
+    }
+
+    function clearForm() {
+      document.getElementById('name').value = '';
+      document.getElementById('contact_info').value = '';
+      document.getElementById('assignment').value = '';
+      document.getElementById('service_history').value = '';
+    }
+  </script>
+</body>
+</html>

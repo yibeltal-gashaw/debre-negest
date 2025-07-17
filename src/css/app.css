@@ -1,0 +1,352 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  overflow: hidden;
+}
+.main {
+  height: 100vh;
+  display: flex;
+}
+/* SIDE BAR*/
+.side-bar {
+  padding: 16px;
+  background-color: rgb(0, 0, 0, 0.2);
+}
+.sidebar-menu-scroll {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+}
+.logo-img {
+  border: 1px solid wheat;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  display: inline-block;
+  text-align: center;
+}
+.logo-name {
+  display: none;
+}
+.menu {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.menu-title {
+  color: white;
+}
+.menu-header {
+  color: gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.menu-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 8px;
+  text-decoration: none;
+  color: black;
+}
+.menu-item:hover{
+    background: rgb(0, 0, 0, 0.1);
+}
+.menu-img {
+  width: 25px;
+}
+.menu-title {
+  display: none;
+}
+.menu-item-dropdown{
+    position: relative;
+    display: flex;
+}
+.menu-item-dropdown-content{
+    display: none;
+    
+}
+.menu-item-dropdown:hover .menu-item-dropdown-content{
+    display: block;
+}
+/* MAIN CONTAINER */
+.main-container {
+  background-color: rgb(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: rgb(0, 0, 0, 0.06);
+}
+.nav-search-bar {
+  display: flex;
+  gap: 10px;
+  border: 1px solid gray;
+  border-radius: 6px;
+  padding-left: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.nav-search-bar-input {
+  background: transparent;
+  border: none;
+  width: 200px;
+  padding: 10px;
+}
+.nav-search-bar-input:focus {
+  border: none;
+  outline: none;
+}
+.nav-search-icon {
+  width: 25px;
+}
+.nav-icons {
+  display: flex;
+  gap: 20px;
+}
+.nav-round {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.nav-round img {
+  width: 25px;
+}
+.nav-relative {
+  position: relative;
+}
+.notification {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: purple;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+}
+.nav-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.nav-user-name {
+  font-size: 17px;
+  color: white;
+}
+.nav-user-role {
+  color: gray;
+  font-size: 10px;
+}
+.nav-user-profile {
+  width: 40px;
+  border-radius: 20px;
+}
+/* ------------- Middle container ------------- */
+.middle-container-scroll {
+  max-height: calc(100vh - 60px); /* Adjust based on nav-bar height */
+  overflow-y: auto;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  height: 100%;
+}
+.user-cards {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.user-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 10px;
+  min-width: 200px;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(60, 60, 120, 0.08);
+  padding: 24px 18px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #e0e7ff;
+}
+.user-card:nth-child(1) {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffe5e5 100%);
+  border-color: #ffe5e5;
+}
+.user-card:nth-child(2) {
+  background: linear-gradient(135deg, #f8fafc 0%, #e5ffe5 100%);
+  border-color: #e5ffe5;
+}
+.user-card:nth-child(3) {
+  background: linear-gradient(135deg, #f8fafc 0%, #e5f0ff 100%);
+  border-color: #e5f0ff;
+}
+.user-card:nth-child(4) {
+  background: linear-gradient(135deg, #f8fafc 0%, #fffbe5 100%);
+  border-color: #fffbe5;
+}
+.user-card:hover {
+  transform: translateY(-4px) scale(1);
+  box-shadow: 0 6px 24px rgba(60, 60, 120, 0.16);
+}
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.user-date {
+  font-weight: bold;
+  color: #6366f1;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.user-more {
+  color: #a1a1aa;
+  font-size: 18px;
+  cursor: pointer;
+}
+.user-total {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #334155;
+  margin: 0 0 4px 0;
+}
+.user-title {
+  color: #6366f1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Custom scrollbar for sidebar and middle container */
+.sidebar-menu-scroll::-webkit-scrollbar,
+.middle-container-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.sidebar-menu-scroll::-webkit-scrollbar-thumb,
+.middle-container-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2); /* 20% opacity black */
+  border-radius: 4px;
+}
+.sidebar-menu-scroll::-webkit-scrollbar-track,
+.middle-container-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* For Firefox */
+.sidebar-menu-scroll,
+.middle-container-scroll {
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-width: thin;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .side-bar {
+    width: 14%;
+  }
+  .main-container {
+    width: 86%;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .side-bar {
+    width: 8%;
+  }
+  .main-container {
+    width: 92%;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .side-bar {
+    width: 8%;
+  }
+  .main-container {
+    width: 92%;
+  }
+  /* ------------- Middle container ------------- */
+  .main-div {
+    flex-direction: row;
+  }
+  .main-left-div {
+    flex: 66%;
+  }
+  .main-right-div {
+    flex: 34%;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .side-bar {
+    width: 16%;
+  }
+  .main-container {
+    width: 84%;
+  }
+  .logo-name {
+    display: block;
+    color: grey;
+  }
+  .logo {
+    justify-content: start;
+    color: grey;
+  }
+  .menu-title {
+    display: block;
+    color: grey;
+  }
+  .menu-item {
+    justify-content: start;
+  }
+  .nav-search-bar-input {
+    width: 300px;
+    padding: 15px;
+  }
+  .nav-search-bar {
+    padding-left: 10px;
+  }
+  /* ------------- Middle container ------------- */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .side-bar {
+    width: 14%;
+  }
+  .main-container {
+    width: 86%;
+  }
+}

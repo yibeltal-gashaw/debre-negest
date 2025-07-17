@@ -1,0 +1,14 @@
+# Ignore node_modules, build artifacts, and sensitive files
+node_modules/
+dist/
+build/
+.env
+*.log
+.DS_Store
+assets/cache/
+assets/db_backup/
+assets/debre_negest.db
+# Ignore Electron specific files
+*.asar
+# Ignore OS generated files
+Thumbs.db
