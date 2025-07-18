@@ -1,298 +1,178 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>DEBRE NEGEST - Dashboard</title>
-    <link rel="stylesheet" href="../css/app.css" />
-  </head>
-  <body>
-    <div class="main">
-      <!-- SIDE BAR-->
-      <div class="side-bar">
-        <!-- LOGO-->
-        <a class="logo" href="#">
-          <span class="logo-img">ደነ</span>
-          <span class="logo-name">ደብረ ነገስት</span>
-        </a>
-        <div class="sidebar-menu-scroll">
-          <div class="menu">
-            <span class="menu-header">Menu</span>
-            <!-- ዋና/መግቢያ-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/home.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ዋና</span>
+
+<head>
+  <title>DEBRE NEGEST - Dashboard</title>
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+
+<body>
+  <div class="main">
+    <!-- SIDE BAR-->
+    <div class="side-bar">
+      <!-- LOGO-->
+      <a class="logo" href="#">
+        <span class="logo-img">ደነ</span>
+        <span class="logo-name">ደብረ ነገስት</span>
+      </a>
+      <div class="sidebar-menu-scroll">
+        <div class="menu">
+          <span class="menu-header">Menu</span>
+          <!-- ዋና/መግቢያ-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-home">
+              <img class="menu-img" src="../../assets/images/home.png" alt="dart " />
+              <span class="menu-title">ዋና</span>
+            </a>
+          </div>
+          <!-- ካህናት-->
+          <div class="menu-items menu-item-dropdown">
+            <a class="menu-item">
+              <img class="menu-img" src="../../assets/images/preist.png" alt="dart " />
+              <span class="menu-title">ካህናት</span>
+            </a>
+            <div id="dropdown" class="menu-item-dropdown-content">
+              <!-- ቀሳዉስት-->
+              <a class="menu-item" href="#" id="menu-preist">
+                <img class="menu-img" src="../../assets/images/preist.png" alt="dart " />
+                <span class="menu-title">ቀሳዉስት</span>
               </a>
-            </div>
-            <!-- ካህናት-->
-            <div class="menu-items menu-item-dropdown">
-              <a class="menu-item">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/preist.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ካህናት</span>
+              <!-- መነኮሳት-->
+              <a class="menu-item" href="#" id="menu-monk">
+                <img class="menu-img" src="../../assets/images/monk.jpg" alt="dart " />
+                <span class="menu-title">መነኮሳት</span>
               </a>
-              <div id="dropdown" class="menu-item-dropdown-content">
-                 <!-- ቀሳዉስት-->
-                <a class="menu-item" href="#">
-                  <img
-                    class="menu-img"
-                    src="../../assets/images/preist.png"
-                    alt="dart "
-                  />
-                  <span class="menu-title">ቀሳዉስት</span>
-                </a>
-                <!-- ቀሳዉስት-->
-                <a class="menu-item" href="#">
-                  <img
-                    class="menu-img"
-                    src="../../assets/images/monk.jpg"
-                    alt="dart "
-                  />
-                  <span class="menu-title">መነኮሳት</span>
-                </a>
-                <!-- ቀሳዉስት-->
-                <a class="menu-item" href="#">
-                  <img
-                    class="menu-img"
-                    src="../../assets/images/deacons.jpg"
-                    alt="dart "
-                  />
-                  <span class="menu-title">ዲያቆናት</span>
-                </a>
-              </div>
-            </div>
-            <!-- ሰባካ ጉባኤ-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/parent.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ሰባካ ጉባኤ</span>
-              </a>
-            </div>
-            <!-- ሰንበት ት/ቤት-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/senbet-timhirt-bet.jpg"
-                  alt="dart "
-                />
-                <span class="menu-title">ሰ/ት/ቤት</span>
-              </a>
-            </div>
-            <!-- ማ/ቅዱሳን-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/mahiber-qdusan.jpg"
-                  alt="dart "
-                />
-                <span class="menu-title">ማ/ቅዱሳን</span>
-              </a>
-            </div>
-            <!-- የፅዋ ማህበራት-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/student.png"
-                  alt="dart "
-                />
-                <span class="menu-title">የፅዋ ማህበራት </span>
-              </a>
-            </div>
-            <!-- ጉባኤ ቤት-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/parent.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ጉባኤ ቤት</span>
-              </a>
-            </div>
-            <!-- ዓመታዊ በዓላት-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/calendar.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ዓመታዊ በዓላት</span>
-              </a>
-            </div>
-            <!-- መልክቶች-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/message.png"
-                  alt="dart "
-                />
-                <span class="menu-title">መልክቶች</span>
-              </a>
-            </div>
-            <!-- አዲስ ነገሮች -->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/announcement.png"
-                  alt="Announcements"
-                />
-                <span class="menu-title">አዲስ ነገሮች</span>
-              </a>
-            </div>
-            <!-- ልዩ ልዩ-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/attendance.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ልዩ ልዩ</span>
-              </a>
-            </div>
-            <span class="menu-header">Other</span>
-            <!-- መለያ-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/profile.png"
-                  alt="dart "
-                />
-                <span class="menu-title">መለያ</span>
-              </a>
-            </div>
-            <!-- ማስተካክያ -->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/setting.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ማስተካክያ</span>
-              </a>
-            </div>
-            <!-- ለመዉጣት-->
-            <div class="menu-items">
-              <a class="menu-item" href="#">
-                <img
-                  class="menu-img"
-                  src="../../assets/images/logout.png"
-                  alt="dart "
-                />
-                <span class="menu-title">ለመዉጣት</span>
+              <!-- ዲያቆናት-->
+              <a class="menu-item" href="#" id="menu-deacon">
+                <img class="menu-img" src="../../assets/images/deacons.jpg" alt="dart " />
+                <span class="menu-title">ዲያቆናት</span>
               </a>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- MAIN CONTENT-->
-      <div class="main-container">
-        <!-- NAV BAR-->
-        <div class="nav-bar">
-          <!-- SEARCH BAR-->
-          <div class="nav-search-bar">
-            <img
-              class="nav-search-icon"
-              src="../../assets/images/search.png"
-              alt="Search"
-            />
-            <input
-              class="nav-search-bar-input"
-              type="text"
-              placeholder="Search..."
-            />
+          <!-- ሰባካ ጉባኤ-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-sebeka-gubae">
+              <img class="menu-img" src="../../assets/images/parent.png" alt="dart " />
+              <span class="menu-title">ሰባካ ጉባኤ</span>
+            </a>
           </div>
-
-          <!-- ICONS AND USER-->
-          <div class="nav-icons">
-            <div class="nav-round nav-relative">
-              <img src="../../assets/images/message.png" alt="Notification" />
-              <div class="notification">1</div>
-            </div>
-            <div class="nav-round">
-              <img
-                src="../../assets/images/announcement.png"
-                alt="Announcements"
-              />
-            </div>
-            <div class="nav-user">
-              <p class="nav-user-name">አበበ ከበደ</p>
-              <p class="nav-user-role">Admin</p>
-            </div>
-            <img
-              class="nav-user-profile"
-              src="/assets//images/avatar.png"
-              alt=""
-            />
+          <!-- ሰንበት ት/ቤት-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-senbet-timhirt-bet">
+              <img class="menu-img" src="../../assets/images/senbet-timhirt-bet.jpg" alt="dart " />
+              <span class="menu-title">ሰ/ት/ቤት</span>
+            </a>
           </div>
-        </div>
-
-        <!-- MIDDLE CONTAINER -->
-        <div class="middle-container-scroll">
-          <div class="main-div">
-            <!-- MIDDLE LEFT CONTAINER -->
-            <div class="main-left-div">
-              <div class="user-cards">
-                <div class="user-card">
-                  <div class="user-header">
-                    <div class="user-date">2025/26</div>
-                    <div class="user-more">...</div>
-                  </div>
-                  <p class="user-total">123</p>
-                  <p class="user-title">ቀሳዉስት</p>
-                </div>
-                <div class="user-card">
-                  <div class="user-header">
-                    <div class="user-date">2025/26</div>
-                    <div class="user-more">...</div>
-                  </div>
-                  <p class="user-total">323</p>
-                  <p class="user-title">ዲያቆናት</p>
-                </div>
-                <div class="user-card">
-                  <div class="user-header">
-                    <div class="user-date">2025/26</div>
-                    <div class="user-more">...</div>
-                  </div>
-                  <p class="user-total">5</p>
-                  <p class="user-title">መነኮሳት(ቆሞሳት)</p>
-                </div>
-                <div class="user-card">
-                  <div class="user-header">
-                    <div class="user-date">2025/26</div>
-                    <div class="user-more">...</div>
-                  </div>
-                  <p class="user-total">6,123</p>
-                  <p class="user-title">ምዕመናን (ንስሓ አባት ያላችዉ)</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- MIDDLE RIGHT CONTAINER -->
-            <div class="main-right-div">r</div>
+          <!-- ማ/ቅዱሳን-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-mahiber-qdusan">
+              <img class="menu-img" src="../../assets/images/mahiber-qdusan.jpg" alt="dart " />
+              <span class="menu-title">ማ/ቅዱሳን</span>
+            </a>
+          </div>
+          <!-- የፅዋ ማህበራት-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-yetswa-mahber-bet">
+              <img class="menu-img" src="../../assets/images/student.png" alt="dart " />
+              <span class="menu-title">የፅዋ ማህበራት </span>
+            </a>
+          </div>
+          <!-- ጉባኤ ቤት-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-gubae-bet">
+              <img class="menu-img" src="../../assets/images/parent.png" alt="dart " />
+              <span class="menu-title">ጉባኤ ቤት</span>
+            </a>
+          </div>
+          <!-- ዓመታዊ በዓላት-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-ametaw-bealat">
+              <img class="menu-img" src="../../assets/images/calendar.png" alt="dart " />
+              <span class="menu-title">ዓመታዊ በዓላት</span>
+            </a>
+          </div>
+          <!-- መልክቶች-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-message">
+              <img class="menu-img" src="../../assets/images/message.png" alt="dart " />
+              <span class="menu-title">መልክቶች</span>
+            </a>
+          </div>
+          <!-- አዲስ ነገሮች -->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-announcement">
+              <img class="menu-img" src="../../assets/images/announcement.png" alt="Announcements" />
+              <span class="menu-title">አዲስ ነገሮች</span>
+            </a>
+          </div>
+          <!-- ልዩ ልዩ-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-others">
+              <img class="menu-img" src="../../assets/images/attendance.png" alt="dart " />
+              <span class="menu-title">ልዩ ልዩ</span>
+            </a>
+          </div>
+          <span class="menu-header">Other</span>
+          <!-- መለያ-->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-profile">
+              <img class="menu-img" src="../../assets/images/profile.png" alt="dart " />
+              <span class="menu-title">መለያ</span>
+            </a>
+          </div>
+          <!-- ማስተካክያ -->
+          <div class="menu-items">
+            <a class="menu-item" href="#" id="menu-setting">
+              <img class="menu-img" src="../../assets/images/setting.png" alt="dart " />
+              <span class="menu-title">ማስተካክያ</span>
+            </a>
+          </div>
+          <!-- ለመዉጣት-->
+          <div class="menu-items">
+            <a class="menu-item" href="login.html" id="menu-logout">
+              <img class="menu-img" src="../../assets/images/logout.png" alt="dart " />
+              <span class="menu-title">ለመዉጣት</span>
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <!-- <script>
+    <!-- MAIN CONTENT-->
+    <div class="main-container">
+      <!-- NAV BAR-->
+      <div class="nav-bar">
+        <!-- SEARCH BAR-->
+        <div class="nav-search-bar">
+          <img class="nav-search-icon" src="../../assets/images/search.png" alt="Search" />
+          <input class="nav-search-bar-input" type="text" placeholder="Search..." />
+        </div>
+
+        <!-- ICONS AND USER-->
+        <div class="nav-icons">
+          <div class="nav-round nav-relative">
+            <img src="../../assets/images/message.png" alt="Notification" />
+            <div class="notification">1</div>
+          </div>
+          <div class="nav-round">
+            <img src="../../assets/images/announcement.png" alt="Announcements" />
+          </div>
+          <div class="nav-user">
+            <p class="nav-user-name">አበበ ከበደ</p>
+            <p class="nav-user-role">Admin</p>
+          </div>
+          <img class="nav-user-profile" src="/assets//images/avatar.png" alt="" />
+        </div>
+      </div>
+
+      <!-- MIDDLE CONTAINER -->
+      <div class="middle-container-scroll" id="main-container">
+        <!-- Content will be loaded here -->
+
+      </div>
+    </div>
+  </div>
+  <script src="../js/shared.js"></script>
+  <!-- <script>
       const { backupDatabase, restoreDatabase } = require("../js/database");
     function show(){
         const child = document.getElementById("dropdown");;
@@ -317,5 +197,6 @@
         }
       }
     </script> -->
-  </body>
+</body>
+
 </html>

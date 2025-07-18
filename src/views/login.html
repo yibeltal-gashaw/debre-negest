@@ -5,8 +5,7 @@
     <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <h1></h1>
+    <div class="container center-card">
       <div class="card">
         <h2>Login</h2>
         <form onsubmit="userLogin(event)">
@@ -17,31 +16,11 @@
             placeholder="Password"
             required
           />
-          <button type="submit">Login</button>
+          <p id="error">please enter a valid username and password!</p>
+          <button class="btn" type="submit">Login</button>
         </form>
       </div>
     </div>
-    <script>
-      const { login } = require("../js/auth.js");
-      function userLogin(event) {
-        event.preventDefault(); // prevent page reload
-        const username = document.getElementById("username").value.trim();
-        const password = document.getElementById("password").value.trim();
-
-        if (!username || !password) {
-          alert("Please fill in all fields.");
-          return;
-        }
-        
-        window.authAPI.login(username, password, (success, role) => {
-          if (success) {
-            localStorage.setItem("role", role);
-            window.location.href = "index.html";
-          } else {
-            alert("Invalid credentials");
-          }
-        });
-      }
-    </script>
+    <script src="../js/auth.js"></script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DEBRE NEGEST - Priests</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <table id="priests-table" class="scrollable-table">
+      <thead class="fixed-header">
+        <tr>
+          <th>ተ.ቁ</th>
+          <th>ስም</th>
+          <th>ስልክ ቁጥር</th>
+          <th>እድሜ </th>
+          <th>አገልግሎት </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="priest-data">
+       
+      </tbody>
+
+    </table>
+    <button id="fab-add-priest" title="Add Priest">＋</button>
+    <!-- Modal Background -->
+    <div id="add-priest-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <h2>አዲስ ካህን መዝግብ</h2>
+        <form id="addPriestForm">
+          <label>ስም:</label><br>
+          <input type="text" id="priestName" required /><br><br>
+
+          <label>ስልክ ቁጥር:</label><br>
+          <input type="tel" id="priestPhone" required /><br><br>
+
+          <label>እድሜ:</label><br>
+          <input type="number" id="priestAge" required min="18" /><br><br>
+
+          <label>አገልግሎት:</label><br>
+          <input type="text" id="priestService" required /><br><br>
+
+          <button type="submit">አስገባ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>

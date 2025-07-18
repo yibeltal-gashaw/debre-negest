@@ -2,7 +2,7 @@ import { app, BrowserWindow } from 'electron';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
-
+import { initDatabase } from './src/js/database.js';
 // Setup __dirname workaround for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,17 +25,29 @@ app.commandLine.appendSwitch
 
 
 // Enable hot reload during development
-if (process.argv.includes('--hot-reload')) {
-  try {
-    require('electron-reload')(__dirname, {
-      electron: require(`${__dirname}/node_modules/electron`),
-      ignored: /node_modules|[\/\\]\.|assets\/debre_negest\.db|assets\/db_backup|assets\/cache/
-    });
-    console.log('Hot reload enabled');
-  } catch (err) {
-    console.error('Failed to enable hot reload:', err.message);
-  }
-}
+// if (process.argv.includes('--hot-reload')) {
+//   (async () => {
+//     try {
+//       const electronReload = await import('electron-reload');
+
+//       // __dirname already set earlier using fileURLToPath
+//       const { spawn } = await import('child_process');
+//       const electronPath = path.join(__dirname, 'node_modules', '.bin', 'electron');
+
+//       electronReload.default(__dirname, {
+//         electron: electronPath,
+//         hardResetMethod: 'exit',
+//         ignored: /node_modules|[\/\\]\.|assets\/debre_negest\.db|assets\/db_backup|assets\/cache/
+//       });
+
+//       console.log('Hot reload enabled');
+//     } catch (err) {
+//       console.error('Failed to enable hot reload:', err);
+//     }
+//   })();
+// }
+
+
 
 let mainWindow;
 
@@ -53,7 +65,7 @@ function createWindow() {
   });
 
   mainWindow.loadFile('src/views/index.html').catch(err => {
-    console.error('Failed to load login.html:', err.message);
+    console.error('Failed to load index.html:', err.message);
   });
   initDatabase();
 }

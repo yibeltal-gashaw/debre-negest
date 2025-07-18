@@ -1,11 +1,15 @@
-const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
-const fs = require("fs");
-const bcrypt = require("bcrypt");
+import bcrypt from "bcrypt";
+import fs from "fs";
+import path from "path";
+import sqlite3pkg from "sqlite3";
+import { fileURLToPath } from 'url';
+const sqlite3 = sqlite3pkg.verbose();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 let db;
 
-function initDatabase() {
+export function initDatabase() {
   db = new sqlite3.Database(
     path.join(__dirname, "../../assets/debre_negest.db"),
     (err) => {
@@ -17,7 +21,7 @@ function initDatabase() {
   );
 }
 
-function createTables() {
+export function createTables() {
   db.serialize(() => {
     // Users table for role-based access
     db.run(`
@@ -76,7 +80,7 @@ function createTables() {
     `);
   });
 }
-function createDefaultAdmin() {
+export function createDefaultAdmin() {
   const defaultUsername = 'admin';
   const defaultPassword = 'admin123';
   db.get('SELECT * FROM users WHERE username = ?', [defaultUsername], (err, row) => {
@@ -102,7 +106,7 @@ function createDefaultAdmin() {
     }
   });
 }
-function backupDatabase() {
+export function backupDatabase() {
   const backupPath = path.join(__dirname, "../../assets/db_backup/");
   if (!fs.existsSync(backupPath)) {
     fs.mkdirSync(backupPath, { recursive: true });
@@ -115,9 +119,9 @@ function backupDatabase() {
   return backupFile;
 }
 
-function restoreDatabase(backupFile) {
+export function restoreDatabase(backupFile) {
   const dbPath = path.join(__dirname, "../../assets/debre_negest.db");
   fs.copyFileSync(backupFile, dbPath);
 }
 
-module.exports = { initDatabase, db, backupDatabase, restoreDatabase };
+// module.exports = { initDatabase, db, backupDatabase, restoreDatabase };
