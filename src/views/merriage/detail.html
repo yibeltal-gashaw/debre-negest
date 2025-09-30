@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dynamic Marriage Certificate</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body>
+    <div class="certificate">
+      <div class="header">
+        <h2>የመዝገብ ቁጥር _________</h2>
+        <h2>
+          "ሰው አባትና እናቱን ይተዋል ከሚስቱም ጋር ይተባበራል <br />
+          ሁለቱም አንድ ሥጋ ይሆናሉ።" ኤፌ 5፡31
+        </h2>
+      </div>
+
+      <div class="photos">
+          <div
+            class="photo"
+            id="husbandPhoto">
+          </div>
+
+        <div>
+          <h2 class="header-title">በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተ ክርስቲያን</h2>
+          <h2 class="sub-header">የጋብቻ የምስክር ወረቀት</h2>
+          <h1 class="en-sub-header">Marriage of Certificate</h1>
+        </div>
+
+          <div
+            class="photo"
+            id="wifePhoto"
+          >
+        </div>
+      </div>
+      <div class="teklil-crowns">
+        <div class="teklil-crown">
+          <img src="../../assets/images/t-crown.png" alt="Teklil crown" />
+        </div>
+        <div class="teklil-crown">
+          <img src="../../assets/images/t-crown.png" alt="Teklil crown" />
+        </div>
+      </div>
+      <div class="info-section" id="info-section">
+        
+      </div>
+
+      <div class="footer">
+        <div class="info-section">
+        <div class="info center-card rotate">
+          <p>"ይህ ሚስጥር ታላቅ ነው።"</p>
+          <p>ኤፌሦን 5፡32</p>
+        </div>
+        <div class="info long-info" id="long-info">
+          
+      </div>
+      </div>
+
+        <div class="signature">
+          <p>የቤተክርስቲያኑ (ገዳሙ) አስተዳዳሪ</p>
+          <div><label>ስም</label><input type="text"></div>
+          <div><label>ፊርማ ________________</label></div>
+      </div>
+    </div>
+
+    <button class="print-btn">
+      Print Certificate
+    </button>
+    <button id="previewBtn">Preview Document</button>
+<button id="printBtn">Print Document</button>
+    <!-- Show PDF preview -->
+<iframe id="pdfPreview" width="100%" height="600"></iframe>
+  </body>
+</html>

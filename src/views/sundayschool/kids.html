@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <table id="priests-table">
+      <thead>
+        <tr>
+          <th>ተቁ</th>
+          <th>ፎቶ</th>
+          <th>ዓለማዊ ስም</th>
+          <th>መንፈሳዊ ስም</th>
+          <th>እድሜ</th>
+          <th>የት/ት ደረጃ</th>
+          <th>የወላጅ ስልክ</th>
+          <th>ራዕይ ዓለማዊ </th>
+          <th>ራዕይ መንፈሳዊ </th>
+          <th>ፆታ </th>
+          <th>አድራሻ </th>
+          <th>ሰ/ት የጀመሩበት ዓም </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button id="fab-add-priest" class="fab-add" title="Add Priest">＋</button>
+    <!-- Modal Background -->
+    <div id="add-priest-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <h2>አዲስ ካህን መዝግብ</h2>
+        <div class="progress-bar">
+          <div class="step active">1</div>
+          <div class="step">2</div>
+          <div class="step">3</div>
+        </div>
+        <form id="addPriestForm">
+          <div class="form-step" id="step-1">
+            <!-- Personal Info fields -->
+            <label>ዓለማዊ ስም:</label><br>
+            <input type="text" id="priestName" required />
+            <label>የክርስትና ስም:</label><br>
+            <input type="text" id="priestName" required />
+            <label>ስልክ ቁጥር:</label><br>
+            <input type="tel" id="priestPhone" required />
+            <label>እድሜ:</label><br>
+            <input type="number" id="priestAge" required min="18" />
+            <button type="button" id="next-1">Next</button>
+          </div>
+          <div class="form-step" id="step-2" style="display:none;">
+            <!-- Service Info fields -->
+            <label>አገልግሎት:</label><br>
+            <select id="priestService">
+              <option value="kahin">ካህን </option>
+              <option value="deacon">ዲያቆን </option>
+              <option value="likedeacon">ሊቀ ዲያቆን </option>
+              <option value="yemetsaf-memhir">የመጻፍ መምህር </option>
+              <option value="yeaquaquam-memhir">የአቋቋም መምህር </option>
+              <option value="yeqdase-memhir">የቅዳሴ መምህር </option><br>
+            </select>
+            <label>የተሰጠ የማዕረግ ስም:</label><br>
+            <input type="text" id="priestName" required />
+            <label>ዲቁና የተቀበለበት :</label><br>
+            <input type="date" id="priestName" required />
+            <label>ቅስና የተቀበለበት :</label><br>
+            <input type="date" id="priestName" required />
+            <label>ቁምስና የተቀበለበት :</label><br>
+            <input type="date" id="priestName" required />
+            <label>ጵጵስና የተቀበለበት :</label><br>
+            <input type="date" id="priestName" required />
+            <label>አገልግሎት የጀመረበት :</label><br>
+            <input type="date" id="priestName" required />
+
+            <label>ደሞዝ:</label><br>
+            <input type="number" id="priest-sallary" required />
+            <button type="button" id="back-2">Back</button>
+            <button type="button" id="next-2">Next</button>
+          </div>
+
+          <div class="form-step" id="step-3" style="display:none;">
+            <!-- Additional Info fields -->
+            <label>አለማዊ የት/ት ደረጃ :</label><br>
+            <input type="tel" id="priestPhone" required />
+            <label>የግል ስራ :</label><br>
+            <input type="text" id="priestName" required />
+            <label>አድራሻ :</label><br>
+            <input type="text" id="priestName" required />
+            <input type="checkbox" name="married" id="married">
+            <label for="married">ባለ ትዳር</label>
+            <input type="checkbox" name="single" id="single">
+            <label for="single">ያላገባ </label><br>
+            <label>ፎቶ :</label><br>
+            <input type="file" id="priestName" required /><br><br>
+            <button type="button" id="back-3">Back</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

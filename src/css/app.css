@@ -21,20 +21,28 @@ body {
 .logo {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   text-decoration: none;
   color: white;
 }
 .logo-img {
   border: 1px solid wheat;
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px #e0e0e0, 0 0 16px 4px #4a90e2aa, 0 0 32px 8px #4a90e244;
   display: inline-block;
   text-align: center;
 }
 .logo-name {
   display: none;
+  color: #4a90e2; /* matches the blue glow */
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 4px #e0e0e0, 0 0 8px #4a90e2aa, 0 0 16px #4a90e244;
 }
 .menu {
   margin-top: 12px;
@@ -62,8 +70,8 @@ body {
   text-decoration: none;
   color: black;
 }
-.menu-item:hover{
-    background: rgb(0, 0, 0, 0.1);
+.menu-item:hover {
+  background: rgb(0, 0, 0, 0.1);
 }
 .menu-img {
   width: 25px;
@@ -71,16 +79,15 @@ body {
 .menu-title {
   display: none;
 }
-.menu-item-dropdown{
-    position: relative;
-    display: flex;
+.menu-item-dropdown {
+  position: relative;
+  display: flex;
 }
-.menu-item-dropdown-content{
-    display: none;
-    
+.menu-item-dropdown-content {
+  display: none;
 }
-.menu-item-dropdown:hover .menu-item-dropdown-content{
-    display: block;
+.menu-item-dropdown:hover .menu-item-dropdown-content {
+  display: block;
 }
 /* MAIN CONTAINER */
 .main-container {
@@ -164,6 +171,7 @@ body {
 .nav-user-profile {
   width: 40px;
   border-radius: 20px;
+  cursor: pointer;
 }
 /* ------------- Middle container ------------- */
 .middle-container-scroll {
@@ -192,24 +200,24 @@ body {
   background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(60, 60, 120, 0.08);
-  padding: 24px 18px;
+  padding: 5px 10px;
   transition: transform 0.2s, box-shadow 0.2s;
   border: 1px solid #e0e7ff;
   cursor: pointer;
 }
-.user-card:nth-child(1) {
+.user-card:nth-child(5n + 1) {
   background: linear-gradient(135deg, #f8fafc 0%, #ffe5e5 100%);
   border-color: #ffe5e5;
 }
-.user-card:nth-child(2) {
+.user-card:nth-child(5n + 2) {
   background: linear-gradient(135deg, #f8fafc 0%, #e5ffe5 100%);
   border-color: #e5ffe5;
 }
-.user-card:nth-child(3) {
+.user-card:nth-child(5n + 3) {
   background: linear-gradient(135deg, #f8fafc 0%, #e5f0ff 100%);
   border-color: #e5f0ff;
 }
-.user-card:nth-child(4) {
+.user-card:nth-child(5n + 4) {
   background: linear-gradient(135deg, #f8fafc 0%, #fffbe5 100%);
   border-color: #fffbe5;
 }
@@ -237,7 +245,7 @@ body {
   cursor: pointer;
 }
 .user-total {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #334155;
   margin: 0 0 4px 0;
@@ -278,6 +286,9 @@ body {
   .main-container {
     width: 86%;
   }
+  #fab-add-priest-left {
+    left: 100px;
+  }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -286,6 +297,9 @@ body {
   }
   .main-container {
     width: 92%;
+  }
+  #fab-add-priest-left {
+    left: 100px;
   }
 }
 
@@ -307,6 +321,9 @@ body {
   .main-right-div {
     flex: 34%;
   }
+  #fab-add-priest-left {
+    left: 120px;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -319,7 +336,6 @@ body {
   }
   .logo-name {
     display: block;
-    color: grey;
   }
   .logo {
     justify-content: start;
@@ -339,6 +355,9 @@ body {
   .nav-search-bar {
     padding-left: 10px;
   }
+  #fab-add-priest-left {
+    left: 220px;
+  }
   /* ------------- Middle container ------------- */
 }
 
@@ -349,5 +368,38 @@ body {
   }
   .main-container {
     width: 86%;
+  }
+}
+
+@media print {
+  .side-bar,.nav-bar, .print-btn{
+    display: none !important; /* Hide sidebar */
+  }
+  
+
+  #certificate,
+  #certificate * {
+    display: block !important; /* Show certificate only */
+  }
+
+  /* #certificate {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  } */
+  /* Hide unselected image placeholders or upload controls */
+  .photo-container input,
+  .photo-container label,
+  .photo-container .drag-overlay,
+  .placeholder-text {
+    display: none !important;
+  }
+
+  /* Optionally: hide photo areas with no image set */
+  .photo-container .photo:empty {
+    display: none !important;
   }
 }

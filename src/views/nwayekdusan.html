@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <table id="priests-table">
+      <table id="priests-table">
+        <thead>
+          <tr>
+            <th>ተቁ</th>
+            <th>ፎቶ</th>
+            <th>የእቃው/አልባሳት አይነት</th>
+            <th>ገቢ የሆነበት ዓም</th>
+            <th>ገቢ ያደረገው ስም</th>
+            <th>የወቅቱ ዋጋ</th>
+            <th>አሁን የሚሰጠው አገልግሎት</th>
+            <th>አሁን ያለበት ሁኔታ </th>
+            <th>ምርመራ</th>
+            <th>እርምጃዎች</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <button id="fab-add-new-item" class="fab-add" title="Add Priest">＋</button>
+      <!-- Modal Background -->
+
+      <div id="add-new-item" class="modal">
+        <div class="center">
+          <div class="modal-content sw">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>አዲስ ንዋየ ቅዱስ መዝግብ</h2>
+            <form id="add-item-form">
+              <!-- Item Registration fields -->
+              <label>የእቃው/አልባሳት አይነት:</label><br>
+              <input type="text" id="itemName" required />
+              <label>ገቢ የሆነበት ዓም:</label><br>
+              <input type="date" id="itemEntrytDate" required />
+              <label>ገቢ ያደረገው ስም:</label><br>
+              <input type="text" id="itemGifterName" required />
+              <label>የወቅቱ ዋጋ:</label><br>
+              <input type="number" id="itemsPrice" required />
+              <label>አሁን የሚሰጠው አገልግሎት:</label><br>
+              <input type="text" id="itemsService" required />
+              <label>ምርመራ:</label><br>
+              <input type="text" id="action" required />
+              <label>ፎቶ:</label><br>
+              <div id="drop-area">
+                <p>Drag and Drop image or Select from your Computer</p>
+                <input type="file" id="itemPhoto" accept="image/*" hidden />
+                <button type="button" id="selectFileBtn" onclick="uploadImage('itemPhoto')">ፎቶ ይምረጡ</button>
+                <img id="itemPhotoPreview" style="max-width: 100px; display: none; margin-top: 10px;" />
+              </div>
+              <button class="btn lg" type="submit">save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+
+</html>

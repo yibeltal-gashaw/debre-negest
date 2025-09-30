@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <table id="priests-table">
+      <table id="priests-table">
+      <thead>
+        <tr>
+          <th>ተቁ</th>
+          <th>ክፍላት</th>
+          <th>ተጠሪ</th>
+          <th>ስልክ ቁጥር</th>
+          <th>የአባላት ብዛት</th>
+          <th>አመታዊ እቅድ </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>ልማት ክፍል</td>
+          <td>አበበ</td>
+          <td>0987654321</td>
+          <td>45</td>
+          <td><input type="file"></td>
+          <td><button>export</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="fab-add-kiflat" class="fab-add" title="Add Priest">＋</button>
+    <!-- Modal Background -->
+    <div id="add-kiflat-modal" class="modal">
+      <div class="center">
+        <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <h2>አዲስ ክፍላት መዝግብ</h2>
+        <form id="kiflat-form">
+        <!-- Item Registration fields -->
+            <label>የክፍላቱ ስም:</label><br>
+            <input type="text" id="kiflatName" required/>
+            <label>የክፍላቱ ተጠሪ:</label><br>
+            <input type="text" id="kiflatRep" required/>
+            <label>ስልክ ቁጥር:</label><br>
+            <input type="tel" id="repPhone" required />
+            <label>የአባላት ብዛት:</label><br>
+            <input type="number" id="kiflatSize" required/>
+            <label>አመታዊ እቅድ:</label><br>
+            <input type="file" accept="document/.pdf" id="kiflatYearlyPlan" required/><br>
+            <button class="btn lg" type="submit">save</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Priest Detail</title>
+    <link rel="stylesheet" href="../css/styles.css" />
 </head>
+
 <body>
-    <div id="priest-detail-container">
-        <p>priest detail container</p>
+    <div class="priest-card" id="priest-detail-container">
+        <!-- Content will be injected by JS -->
     </div>
-    <script type="module" src="../js/script/priest-detail.js"></script>
+    <div class="container">
+        <table id="priests-table">
+            <thead id="priests-table-header">
+                <tr>
+                    <th>ተ.ቁ</th>
+                    <th>ፎቶ</th>
+                    <th>አለማዊ ስም</th>
+                    <th>የክርስትና ስም</th>
+                    <th>ስልክ ቁጥር</th>
+                    <th>ስራ</th>
+                    <th>ሙያ</th>
+                    <th>የባለቤት አለማዊ ስም</th>
+                    <th>የባለቤት የክርስትና ስም</th>
+                    <th>ስልክ ቁጥር</th>
+                    <th>ስራ</th>
+                    <th>ሙያ</th>
+                    <th>አድራሻ</th>
+                    <th>ቀጠና</th>
+                    <th>የሰባካ ክፍያ</th>
+                </tr>
+            </thead>
+            <tbody id="servants-data">
+
+            </tbody>
+        </table>
+        <!-- Modal Background -->
+        <div id="update-priest-modal" class="modal">
+            <div class="center">
+                <div class="modal-content">
+                    <span class="close-button" id="close-modal">&times;</span>
+                    <form id="updatePriestForm">
+                        <!-- Service Info fields -->
+                        <div id="dicona-field" class="priest-date-field">
+                            <label>ዲቁና የተቀበለበት:</label><br>
+                            <input type="date" id="upriestdicona" />
+                        </div>
+                        <div id="qsna-field" class="priest-date-field">
+                            <label>ቅስና የተቀበለበት:</label><br>
+                            <input type="date" id="upriestqsna" />
+                        </div>
+                        <div id="qumsna-field" class="priest-date-field">
+                            <label>ቁምስና የተቀበለበት:</label><br>
+                            <input type="date" id="upriestqumsna" />
+                        </div>
+                        <div id="ppsna-field" class="priest-date-field">
+                            <label>ጵጵስና የተቀበለበት:</label><br>
+                            <input type="date" id="upriestppsna" />
+                        </div>
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

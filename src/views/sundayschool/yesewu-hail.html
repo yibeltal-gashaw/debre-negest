@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <table id="priests-table">
+      <thead>
+        <tr>
+          <th>ተቁ</th>
+          <th>ፎቶ</th>
+          <th>ዓለማዊ ስም</th>
+          <th>የክርስትና ስም </th>
+          <th>ስልክ ቁጥር</th>
+          <th>የንስሀ አባት</th>
+          <th>የት/ት ደረጃ</th>
+          <th>የትዳር ሁኔታ</th>
+          <th>እድሜ</th>
+          <th>አድራሻ </th>
+          <th>ስራ </th>
+          <th>የአልግሎት ክፍል</th>
+          <th>አገልግሎት የጀመረበት/ችበት</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="fab-add-hr" class="fab-add" title="Add Hr">＋</button>
+    <!-- Modal Background -->
+    <div id="add-hr-modal" class="modal">
+      <div class="center">
+        <div class="modal-content sw">
+          <span class="close-button" id="close-modal">&times;</span>
+          <h2>አዲስ የሰንበት ተማሪ መዝግብ</h2>
+          <div class="progress-bar">
+            <div class="step active">1</div>
+            <div class="step">2</div>
+            <div class="step">3</div>
+          </div>
+          <form id="addHrForm">
+            <div class="form-step" id="step-1">
+              <!-- Personal Info fields -->
+              <label>ዓለማዊ ስም:</label><br>
+              <input type="text" id="name" required />
+              <label>የክርስትና ስም:</label><br>
+              <input type="text" id="cname" required />
+              <label>ስልክ ቁጥር:</label><br>
+              <input type="tel" id="phone" required />
+              <label>እድሜ:</label><br>
+              <input type="number" id="age" required min="18" />
+              <button type="button" id="next-1">Next</button>
+            </div>
+            <div class="form-step" id="step-2" style="display:none;">
+              <!-- Service Info fields -->
+              <label>አገልግሎት:</label><br>
+              <input type="text" id="service">
+              <label>የንስሀ አባት:</label><br>
+              <input type="text" id="yenshaAbat" required />
+              <label>አድራሻ:</label><br>
+              <input type="text" id="address" required />
+              <label>አገልግሎት የጀመረበት :</label><br>
+              <input type="date" id="startingDate" required />
+              <button type="button" id="back-2">Back</button>
+              <button type="button" id="next-2">Next</button>
+            </div>
+            <div class="form-step" id="step-3" style="display:none;">
+              <!-- Additional Info fields -->
+              <label>አለማዊ የት/ት ደረጃ :</label><br>
+              <input type="tel" id="status" required />
+              <label>የግል ስራ :</label><br>
+              <input type="text" id="job" required />
+              <input type="checkbox" name="married" id="married">
+              <label for="married">ባለ ትዳር</label>
+              <input type="checkbox" name="single" id="single">
+              <label for="single">ያላገባ </label><br>
+              <label>ፎቶ :</label><br>
+              <input type="file" id="photo" required /><br><br>
+              <button type="button" id="back-3">Back</button>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

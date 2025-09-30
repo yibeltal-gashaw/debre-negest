@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/app.css">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div class="container">
+    <table id="priests-table">
+      <thead>
+        <tr>
+          <th>ተቁ</th>
+          <th>ፎቶ</th>
+          <th>ዓለማዊ ስም</th>
+          <th>መንፈሳዊ ስም</th>
+          <th>እድሜ</th>
+          <th>የት/ት ደረጃ</th>
+          <th>ስልክ ቁጥር</th>
+          <th>ትዳር </th>
+          <th>ፆታ </th>
+          <th>አድራሻ </th>
+          <th>ሰ/ት የጀመሩበት ዓም </th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button id="fab-add-priest" class="fab-add" title="Add Priest">＋</button>
+    <button id="fab-add-priest-left" title="Add Priest">ስራ አስፈጻሚዎች</button>
+    
+    <!-- Modal Background -->
+    <div id="sira-asfetsami-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <span class="span-button" id="add-modal">create</span>
+        <span class="span-button" id="expoort-modal">export</span>
+        <table id="kiflat-table">
+          <thead>
+            <tr>
+              <th>ዓ.ም</th>
+              <th>ሰብሳቢ</th>
+              <th>ምክትል ሰብሳቢ</th>
+              <th>ጸሀፊ</th>
+              <th>ት/ት ክፍል </th>
+              <th>መዝሙር  </th>
+              <th>ልማት </th>
+              <th>አባላት </th>
+              <th>መረጃ ክፍል</th>
+              <th>ሒሳብና ንብረት</th>
+              <th>ቅጥጥር</th>
+              <th>ኪን-ጥበብ</th>
+              <th>ሕጻናት </th>
+              <th>የሰበካ ተወካይ</th>
+            </tr>
+          </thead>
+          <tbody id="kiflat-data">
+            <tr>
+              <td>2016</td>
+              <td>አበበ ከበደ</td>
+              <td>ፈቃዱ አለሙ</td>
+              <td>ሽብሩ ከበደ</td>
+              <td>ሙሉየ ከበደ</td>
+              <td>አበበ ከበደ</td>
+              <td>ኤልያስ ከበደ</td>
+              <td>ሰማይ  አባተ</td>
+              <td>ዮሐንስ ከበደ</td>
+              <td>ሙሉየ ከበደ</td>
+              <td>አበበ ከበደ</td>
+              <td>ኤልያስ ከበደ</td>
+              <td>ሰማይ  አባተ</td>
+              <td>ዮሐንስ ከበደ</td>
+            </tr>
+            <tr>
+              <td>2017</td>
+              <td>አበበ ከበደ</td>
+              <td>ፈቃዱ አለሙ</td>
+              <td>ሽብሩ ከበደ</td>
+              <td>ሙሉየ ከበደ</td>
+              <td>አበበ ከበደ</td>
+              <td>ኤልያስ ከበደ</td>
+              <td>ሰማይ  አባተ</td>
+              <td>ዮሐንስ ከበደ</td>
+              <td>ሙሉየ ከበደ</td>
+              <td>አበበ ከበደ</td>
+              <td>ኤልያስ ከበደ</td>
+              <td>ሰማይ  አባተ</td>
+              <td>ዮሐንስ ከበደ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="kiflat-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" id="close-modal">&times;</span>
+        <h2>አዲስ ክፍላት መዝግብ</h2>
+        <form id="addPriestForm">
+          <!-- Personal Info fields -->
+          <label>ክፍላት:</label><br>
+          <input type="text" id="kiflatName" required />
+          <label>ተጠሪ:</label><br>
+          <input type="text" id="kiflatRepresetative" required />
+          <label>ስልክ ቁጥር:</label><br>
+          <input type="tel" id="kiflatPhone" required />
+          <label>የአባላት ብዛት:</label><br>
+          <input type="number" id="kiflatAge" required min="18" />
+          <label>አመታዊ እቅድ:</label><br>
+          <input type="file" id="kiflatplan" required min="18" />
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

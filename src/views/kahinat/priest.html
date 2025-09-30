@@ -5,51 +5,208 @@
   <title>DEBRE NEGEST - Priests</title>
   <link rel="stylesheet" href="../css/styles.css">
 </head>
+<style>
+/* Modal adjustments */
+.modal-content.mw {
+  max-width: 800px;
+  margin: auto;
+}
 
+/* Flex container for date + file inputs */
+.priest-date-field {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.priest-date-field > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* make both columns equal width */
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 600px) {
+  .priest-date-field {
+    flex-direction: column;
+  }
+}
+
+/* Inputs and labels styling for better spacing */
+input, select, label {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.progress-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.progress-bar .step {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+.progress-bar .step.active {
+  background: #4CAF50;
+  color: #fff;
+}
+
+button {
+  margin: 10px 5px 0 0;
+}
+</style>
 <body>
   <div class="container">
     <table id="priests-table" class="scrollable-table">
       <thead class="fixed-header">
         <tr>
           <th>ተ.ቁ</th>
+          <th>ፎቶ </th>
           <th>ስም</th>
           <th>ስልክ ቁጥር</th>
-          <th>እድሜ </th>
           <th>አገልግሎት </th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody id="priest-data">
-       
+
       </tbody>
 
     </table>
-    <button id="fab-add-priest" title="Add Priest">＋</button>
+    <button id="fab-add-priest" class="fab-add">
+      <img src="../../assets/images/couple-wedding-r.png" alt="Add Couple">
+      <span class="fab-text none">አዲስ ካህን መዝግብ </span>
+    </button>
     <!-- Modal Background -->
     <div id="add-priest-modal" class="modal">
-      <div class="modal-content">
+      <div class="modal-content mw">
         <span class="close-button" id="close-modal">&times;</span>
         <h2>አዲስ ካህን መዝግብ</h2>
+        <div class="progress-bar">
+          <div class="step active">1</div>
+          <div class="step">2</div>
+          <div class="step">3</div>
+        </div>
+    
         <form id="addPriestForm">
-          <label>ስም:</label><br>
-          <input type="text" id="priestName" required /><br><br>
-
-          <label>ስልክ ቁጥር:</label><br>
-          <input type="tel" id="priestPhone" required /><br><br>
-
-          <label>እድሜ:</label><br>
-          <input type="number" id="priestAge" required min="18" /><br><br>
-
-          <label>አገልግሎት:</label><br>
-          <input type="text" id="priestService" required /><br><br>
-
-          <button type="submit">አስገባ</button>
+          <!-- Step 1: Personal Info -->
+          <div class="form-step" id="step-1">
+            <label for="priestName">ዓለማዊ ስም:</label>
+            <input type="text" id="priestName" required />
+            <label for="priestCname">የክርስትና ስም:</label>
+            <input type="text" id="priestCname" required />
+            <label for="priestPhone">ስልክ ቁጥር:</label>
+            <input type="tel" id="priestPhone" required />
+            <label for="priestAge">እድሜ:</label>
+            <input type="number" id="priestAge" required min="18" />
+            <button type="button" id="next-1">Next</button>
+          </div>
+    
+          <!-- Step 2: Service Info -->
+          <div class="form-step" id="step-2" style="display:none;">
+            <label for="priestService">አገልግሎት:</label>
+            <select id="priestService">
+              <option value="">-- አገልግሎት ይምረጡ --</option>
+              <option value="ዲያቆን">ዲያቆን</option>
+              <option value="ካህን">ካህን</option>
+              <option value="ቆሞስ">ቆሞስ</option>
+              <option value="ሊቀ ዲያቆን">ሊቀ ዲያቆን</option>
+              <option value="የመጻፍ መምህር">የመጻፍ መምህር</option>
+              <option value="የአቋቋም መምህር">የአቋቋም መምህር</option>
+              <option value="የቅዳሴ መምህር">የቅዳሴ መምህር</option>
+              <option value="ጳጳስ">ጳጳስ</option>
+            </select>
+    
+            <!-- Dicona Field (Date + File) side by side -->
+            <div id="dicona-field" class="priest-date-field" style="display:flex; gap:20px;">
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestdicona">ዲቁና የተቀበለበት:</label>
+                <input type="date" id="priestdicona" />
+              </div>
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestdiconacertificate">የዲቁና ምስክር ወረቀት :</label>
+                <input type="file" id="priestdiconacertificate" accept="application/pdf" />
+              </div>
+            </div>
+    
+            <!-- Other fields (qsna, qumsna, ppsna) side by side -->
+            <div id="qsna-field" class="priest-date-field" style="display:flex; gap:20px;">
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestqsna">ቅስና የተቀበለበት:</label>
+                <input type="date" id="priestqsna" />
+              </div>
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestqsnacertificate">የቅስና ምስክር ወረቀት :</label>
+                <input type="file" id="priestqsnacertificate" accept="application/pdf" />
+              </div>
+            </div>
+    
+            <div id="qumsna-field" class="priest-date-field" style="display:flex; gap:20px;">
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestqumsna">ቁምስና የተቀበለበት:</label>
+                <input type="date" id="priestqumsna" />
+              </div>
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestqumsnacertificate">የቁምስና ምስክር ወረቀት :</label>
+                <input type="file" id="priestqumsnacertificate" accept="application/pdf"/>
+              </div>
+            </div>
+    
+            <div id="ppsna-field" class="priest-date-field" style="display:flex; gap:20px;">
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestppsna">ጵጵስና የተቀበለበት:</label>
+                <input type="date" id="priestppsna" />
+              </div>
+              <div style="display:flex; flex-direction:column;">
+                <label for="priestppsnacertificate">የጵጵስና ምስክር ወረቀት :</label>
+                <input type="file" id="priestppsnacertificate" accept="application/pdf"/>
+              </div>
+            </div>
+    
+            <label for="priestservicestartyear">አገልግሎት የጀመረበት :</label>
+            <input type="date" id="priestservicestartyear" />
+            <label for="priestMaereg">የተሰጠ የማዕረግ ስም:</label>
+            <input type="text" id="priestMaereg" />
+            <label for="priestSallary">ደሞዝ:</label>
+            <input type="number" id="priestSallary" required />
+    
+            <button type="button" id="back-2">Back</button>
+            <button type="button" id="next-2">Next</button>
+          </div>
+    
+          <!-- Step 3: Additional Info -->
+          <div class="form-step" id="step-3" style="display:none;">
+            <label for="yetmrtdereja">አለማዊ የት/ት ደረጃ :</label>
+            <input type="text" id="yetmrtdereja" />
+            <label for="priestyeglsira">የግል ስራ :</label>
+            <input type="text" id="priestyeglsira" />
+            <label for="priestAddress">አድራሻ :</label>
+            <input type="text" id="priestAddress" />
+            <div>
+              <input type="radio" name="marital" id="married">
+              <label for="married">ባለ ትዳር</label>
+              <input type="radio" name="marital" id="single">
+              <label for="single">ያላገባ </label>
+            </div>
+            <label for="priestPhoto">ፎቶ :</label>
+            <input type="file" id="priestPhoto" /><br><br>
+            <button type="button" id="back-3">Back</button>
+            <button type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </div>
+    
   </div>
-
-
+  
 </body>
-
 </html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Marriage Certificate</title>
+  <style>
+    /* Basic Page Setup */
+    .cbody {
+      font-family: 'Nyala', 'Tinos', serif;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    /* Certificate Styling */
+    .certificate {
+      width: 1200px;
+      max-width: 100%;
+      background: white;
+      padding: 40px;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border: 20px solid;
+      border-image-slice: 1;
+      border-image-source: repeating-linear-gradient(45deg, #d4af37, #d4af37 10px, #f0e68c 10px, #f0e68c 20px);
+    }
+
+    .header,
+    .footer {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .photos {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .photo-container {
+      width: 150px;
+      height: 180px;
+      border: 2px dashed #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #f9f9f9;
+    }
+
+    .header-title {
+      font-size: 1.5em;
+    }
+
+    .sub-header {
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    .en-sub-header {
+      font-size: 1.2em;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .info-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+
+    .info {
+      width: 48%;
+    }
+
+    .info div {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .info label {
+      white-space: nowrap;
+      padding-right: 10px;
+    }
+
+    .info input[type="text"],
+    .info input[type="date"] {
+      width: 100%;
+      border: none;
+      border-bottom: 1px dotted #333;
+      background: transparent;
+      font-family: 'Kalam', cursive;
+      /* For a handwritten look */
+      font-size: 1em;
+      padding: 2px 0;
+    }
+
+    .info input:focus {
+      outline: none;
+    }
+
+    .long-info {
+      width: 100%;
+    }
+
+    .center-card {
+      text-align: center;
+      font-style: italic;
+    }
+
+    .signature {
+      text-align: right;
+    }
+
+    /* Action Button */
+    .action-button {
+      position: absolute;
+      z-index: 999;
+      bottom: 10px;
+      right: 10px;
+      margin: 25px 0;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background-color: #c09526;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .action-button:hover {
+      background-color: #a07b1a;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 3% auto;
+      padding: 25px;
+      border: 1px solid #888;
+      width: 90%;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .close-btn {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .modal-content h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .modal-form-section h3 {
+      text-align: center;
+      color: #c09526;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .modal-photo-container {
+      width: 150px;
+      height: 180px;
+      border: 2px dashed #ccc;
+      margin: 10px auto;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #888;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 25px;
+      gap: 10px;
+    }
+
+    .modal-actions button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .save-button {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .cancel-button {
+      background-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="cbody">
+  <button id="openModalBtn" class="action-button">Register New Marriage</button>
+
+  <div class="certificate">
+    <div class="header">
+      <h2>የመዝገብ ቁጥር <span id="regNoDisplay">_________</span></h2>
+      <h2>"ሰው አባትና እናቱን ይተዋል ከሚስቱም ጋር ይተባበራል <br /> ሁለቱም አንድ ሥጋ ይሆናሉ።" ኤፌ 5፡31</h2>
+    </div>
+
+    <div class="photos">
+      <div class="photo-container">
+        <div class="photo" id="husbandPhoto"></div>
+      </div>
+      <div>
+        <h2 class="header-title">በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተ ክርስቲያን</h2>
+        <h2 class="sub-header">የጋብቻ የምስክር ወረቀት</h2>
+        <h1 class="en-sub-header">Marriage of Certificate</h1>
+      </div>
+      <div class="photo-container">
+        <div class="photo" id="wifePhoto"></div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <div class="info">
+        <div><label>የባል ስም</label><input type="text" id="husbandNameAm" readonly></div>
+        <div><label>Name of Husband</label><input type="text" id="husbandNameEn" readonly></div>
+        <div><label>የመፅሐፍ ስም</label><input type="text" id="husbandChristianNameAm" readonly></div>
+        <div><label>Christian Name</label><input type="text" id="husbandChristianNameEn" readonly></div>
+        <div><label>Date of Birth</label><input type="text" id="husbandDob" readonly></div>
+        <div><label>የትውልድ ቦታ</label><input type="text" id="husbandBirthPlaceAm" readonly></div>
+        <div><label>Place of Birth</label><input type="text" id="husbandBirthPlaceEn" readonly></div>
+        <div><label>የመኖሪያ አድራሻ</label><input type="text" id="husbandResidenceAm" readonly></div>
+        <div><label>Residence</label><input type="text" id="husbandResidenceEn" readonly></div>
+        <div><label>ዜግነት</label><input type="text" id="husbandNationalityAm" readonly></div>
+        <div><label>Nationality</label><input type="text" id="husbandNationalityEn" readonly></div>
+        <div><label>የአባት ስም</label><input type="text" id="husbandFatherNameAm" readonly></div>
+        <div><label>Father's Name</label><input type="text" id="husbandFatherNameEn" readonly></div>
+        <div><label>የእናት ስም</label><input type="text" id="husbandMotherNameAm" readonly></div>
+        <div><label>Mother's Name</label><input type="text" id="husbandMotherNameEn" readonly></div>
+      </div>
+
+      <div class="info">
+        <div><label>የሚስት ስም</label><input type="text" id="wifeNameAm" readonly></div>
+        <div><label>Name Of Wife</label><input type="text" id="wifeNameEn" readonly></div>
+        <div><label>የመፅሐፍ ስም</label><input type="text" id="wifeChristianNameAm" readonly></div>
+        <div><label>Christian Name</label><input type="text" id="wifeChristianNameEn" readonly></div>
+        <div><label>Date of Birth</label><input type="text" id="wifeDob" readonly></div>
+        <div><label>የትውልድ ቦታ</label><input type="text" id="wifeBirthPlaceAm" readonly></div>
+        <div><label>Place of Birth</label><input type="text" id="wifeBirthPlaceEn" readonly></div>
+        <div><label>የመኖሪያ አድራሻ</label><input type="text" id="wifeResidenceAm" readonly></div>
+        <div><label>Residence</label><input type="text" id="wifeResidenceEn" readonly></div>
+        <div><label>ዜግነት</label><input type="text" id="wifeNationalityAm" readonly></div>
+        <div><label>Nationality</label><input type="text" id="wifeNationalityEn" readonly></div>
+        <div><label>የአባት ስም</label><input type="text" id="wifeFatherNameAm" readonly></div>
+        <div><label>Father's Name</label><input type="text" id="wifeFatherNameEn" readonly></div>
+        <div><label>የእናት ስም</label><input type="text" id="wifeMotherNameAm" readonly></div>
+        <div><label>Mother's Name</label><input type="text" id="wifeMotherNameEn" readonly></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="info-section">
+        <div class="info long-info">
+          <div><label>ጋብቻው የተፈፀመበት ቤተክርስቲያን (ገዳም)</label><input type="text" id="churchName" readonly></div>
+          <div><label>ቃል ኪዳኑን የፈፀሙት ካህን (ቆሞስ)</label><input type="text" id="officiatingPriest" readonly></div>
+          <div><label>ጋብቻው የተፈፀመበት ቀን</label><input type="text" id="marriageDate" readonly></div>
+          <div><label>ጋብቻው የተፈፀመበት ዕለት</label><input type="text" id="marriageDay" readonly></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div id="registrationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>New Marriage Registration</h2>
+      <form id="marriageForm">
+        <div class="form-group">
+          <label for="modal_regNo">የመዝገብ ቁጥር (Registration No.)</label>
+          <input type="text" id="modal_regNo" name="regNo">
+        </div>
+        <div class="modal-form-grid">
+          <!-- Husband Section -->
+          <div class="modal-form-section">
+            <h3>Husband's Details</h3>
+            <div class="modal-photo-container" id="modal_husbandPhoto"
+              onclick="triggerUpload('modal_husbandPhotoInput')" ondragover="event.preventDefault()"
+              ondrop="handleDrop(event,'modal_husbandPhotoInput','modal_husbandPhoto')">Click or Drag Photo</div>
+            <input id="modal_husbandPhotoInput" type="file" accept="image/*"
+              onchange="previewImage(event, 'modal_husbandPhoto')" hidden />
+
+            <div class="form-group"><label for="modal_husbandNameAm">የባል ስም</label><input type="text"
+                id="modal_husbandNameAm" name="husbandNameAm"></div>
+            <div class="form-group"><label for="modal_husbandNameEn">Name of Husband</label><input type="text"
+                id="modal_husbandNameEn" name="husbandNameEn"></div>
+            <div class="form-group"><label for="modal_husbandChristianNameAm">የመፅሐፍ ስም</label><input type="text"
+                id="modal_husbandChristianNameAm" name="husbandChristianNameAm"></div>
+            <div class="form-group"><label for="modal_husbandChristianNameEn">Christian Name</label><input type="text"
+                id="modal_husbandChristianNameEn" name="husbandChristianNameEn"></div>
+            <div class="form-group"><label for="modal_husbandDob">Date of Birth</label><input type="date"
+                id="modal_husbandDob" name="husbandDob"></div>
+            <div class="form-group"><label for="modal_husbandFatherNameEn">Father's Name</label><input type="text"
+                id="modal_husbandFatherNameEn" name="husbandFatherNameEn"></div>
+            <div class="form-group"><label for="modal_husbandMotherNameEn">Mother's Name</label><input type="text"
+                id="modal_husbandMotherNameEn" name="husbandMotherNameEn"></div>
+          </div>
+          <!-- Wife Section -->
+          <div class="modal-form-section">
+            <h3>Wife's Details</h3>
+            <div class="modal-photo-container" id="modal_wifePhoto" onclick="triggerUpload('modal_wifePhotoInput')"
+              ondragover="event.preventDefault()" ondrop="handleDrop(event,'modal_wifePhotoInput','modal_wifePhoto')">
+              Click or Drag Photo</div>
+            <input id="modal_wifePhotoInput" type="file" accept="image/*"
+              onchange="previewImage(event, 'modal_wifePhoto')" hidden />
+
+            <div class="form-group"><label for="modal_wifeNameAm">የሚስት ስም</label><input type="text"
+                id="modal_wifeNameAm" name="wifeNameAm"></div>
+            <div class="form-group"><label for="modal_wifeNameEn">Name Of Wife</label><input type="text"
+                id="modal_wifeNameEn" name="wifeNameEn"></div>
+            <div class="form-group"><label for="modal_wifeChristianNameAm">የመፅሐፍ ስም</label><input type="text"
+                id="modal_wifeChristianNameAm" name="wifeChristianNameAm"></div>
+            <div class="form-group"><label for="modal_wifeChristianNameEn">Christian Name</label><input type="text"
+                id="modal_wifeChristianNameEn" name="wifeChristianNameEn"></div>
+            <div class="form-group"><label for="modal_wifeDob">Date of Birth</label><input type="date"
+                id="modal_wifeDob" name="wifeDob"></div>
+            <div class="form-group"><label for="modal_wifeFatherNameEn">Father's Name</label><input type="text"
+                id="modal_wifeFatherNameEn" name="wifeFatherNameEn"></div>
+            <div class="form-group"><label for="modal_wifeMotherNameEn">Mother's Name</label><input type="text"
+                id="modal_wifeMotherNameEn" name="wifeMotherNameEn"></div>
+          </div>
+        </div>
+        <!-- Marriage Details Section -->
+        <div class="modal-form-section">
+          <h3>Marriage Details</h3>
+          <div class="modal-form-grid">
+            <div class="form-group"><label for="modal_churchName">ጋብቻው የተፈፀመበት ቤተክርስቲያን</label><input type="text"
+                id="modal_churchName" name="churchName"></div>
+            <div class="form-group"><label for="modal_officiatingPriest">ቃል ኪዳኑን የፈፀሙት ካህን</label><input type="text"
+                id="modal_officiatingPriest" name="officiatingPriest"></div>
+            <div class="form-group"><label for="modal_marriageDate">ጋብቻው የተፈፀመበት ቀን</label><input type="date"
+                id="modal_marriageDate" name="marriageDate"></div>
+            <div class="form-group"><label for="modal_marriageDay">ጋብቻው የተፈፀመበት ዕለት</label><input type="text"
+                id="modal_marriageDay" name="marriageDay"></div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="cancel-button">Cancel</button>
+          <button type="submit" class="save-button">Save Certificate</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    //  --- Photo Handling Functions ---
+    function triggerUpload(inputId) {
+      document.getElementById(inputId).click();
+    }
+
+    function previewImage(event, elementId) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const output = document.getElementById(elementId);
+        output.style.backgroundImage = `url(${reader.result})`;
+        output.textContent = ''; // Clear text
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function handleDrop(event, inputId, elementId) {
+      event.preventDefault();
+      const dt = event.dataTransfer;
+      const files = dt.files;
+      document.getElementById(inputId).files = files;
+      // Manually trigger the onchange event
+      const changeEvent = new Event('change');
+      document.getElementById(inputId).dispatchEvent(changeEvent);
+    }
+
+    // --- Modal and Form Logic ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('registrationModal');
+      const openBtn = document.getElementById('openModalBtn');
+      const closeBtn = document.querySelector('.close-btn');
+      const cancelButton = document.querySelector('.cancel-button');
+      const marriageForm = document.getElementById('marriageForm');
+
+      const openModal = () => { modal.style.display = 'block'; };
+      const closeModal = () => { modal.style.display = 'none'; };
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      cancelButton.addEventListener('click', closeModal);
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      marriageForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // --- Update Text Fields ---
+        const formInputs = marriageForm.querySelectorAll('input[type="text"], input[type="date"]');
+        formInputs.forEach(input => {
+          const fieldId = input.name;
+          const certificateField = document.getElementById(fieldId);
+          if (certificateField) {
+            certificateField.value = input.value;
+          }
+        });
+
+        // Special handling for Registration Number
+        document.getElementById('regNoDisplay').textContent = document.getElementById('modal_regNo').value;
+
+        // --- Update Photos ---
+        const husbandPhotoUrl = document.getElementById('modal_husbandPhoto').style.backgroundImage;
+        const wifePhotoUrl = document.getElementById('modal_wifePhoto').style.backgroundImage;
+        document.getElementById('husbandPhoto').style.backgroundImage = husbandPhotoUrl;
+        document.getElementById('wifePhoto').style.backgroundImage = wifePhotoUrl;
+
+        closeModal();
+        // Optionally reset the form
+        // marriageForm.reset();
+        // document.getElementById('modal_husbandPhoto').style.backgroundImage = 'none';
+        // document.getElementById('modal_wifePhoto').style.backgroundImage = 'none';
+      });
+    });
+  </script>
+</body>
+
+</html>

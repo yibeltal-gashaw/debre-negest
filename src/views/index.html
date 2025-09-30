@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>DEBRE NEGEST - Dashboard</title>
   <link rel="stylesheet" href="../css/app.css" />
+  <link rel="shortcut icon" href="../debre_negest.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
     <div class="side-bar">
       <!-- LOGO-->
       <a class="logo" href="#">
-        <span class="logo-img">ደነ</span>
+        <img src="../../assets/images/debre_negest.png" alt="Loogo" class="logo-img">
         <span class="logo-name">ደብረ ነገስት</span>
       </a>
       <div class="sidebar-menu-scroll">
@@ -27,33 +27,16 @@
           </div>
           <!-- ካህናት-->
           <div class="menu-items menu-item-dropdown">
-            <a class="menu-item">
+            <a class="menu-item" id="menu-preist">
               <img class="menu-img" src="../../assets/images/preist.png" alt="dart " />
               <span class="menu-title">ካህናት</span>
             </a>
-            <div id="dropdown" class="menu-item-dropdown-content">
-              <!-- ቀሳዉስት-->
-              <a class="menu-item" href="#" id="menu-preist">
-                <img class="menu-img" src="../../assets/images/preist.png" alt="dart " />
-                <span class="menu-title">ቀሳዉስት</span>
-              </a>
-              <!-- መነኮሳት-->
-              <a class="menu-item" href="#" id="menu-monk">
-                <img class="menu-img" src="../../assets/images/monk.jpg" alt="dart " />
-                <span class="menu-title">መነኮሳት</span>
-              </a>
-              <!-- ዲያቆናት-->
-              <a class="menu-item" href="#" id="menu-deacon">
-                <img class="menu-img" src="../../assets/images/deacons.jpg" alt="dart " />
-                <span class="menu-title">ዲያቆናት</span>
-              </a>
-            </div>
           </div>
           <!-- ሰባካ ጉባኤ-->
           <div class="menu-items">
             <a class="menu-item" href="#" id="menu-sebeka-gubae">
               <img class="menu-img" src="../../assets/images/parent.png" alt="dart " />
-              <span class="menu-title">ሰባካ ጉባኤ</span>
+              <span class="menu-title">ምዕመናን</span>
             </a>
           </div>
           <!-- ሰንበት ት/ቤት-->
@@ -63,53 +46,27 @@
               <span class="menu-title">ሰ/ት/ቤት</span>
             </a>
           </div>
-          <!-- ማ/ቅዱሳን-->
+          <!-- ንዋየ ቅዱሳት-->
           <div class="menu-items">
-            <a class="menu-item" href="#" id="menu-mahiber-qdusan">
+            <a class="menu-item" href="#" id="menu-nwaye-qdusan">
               <img class="menu-img" src="../../assets/images/mahiber-qdusan.jpg" alt="dart " />
-              <span class="menu-title">ማ/ቅዱሳን</span>
+              <span class="menu-title">ንዋየ ቅዱሳት</span>
             </a>
           </div>
-          <!-- የፅዋ ማህበራት-->
-          <div class="menu-items">
-            <a class="menu-item" href="#" id="menu-yetswa-mahber-bet">
-              <img class="menu-img" src="../../assets/images/student.png" alt="dart " />
-              <span class="menu-title">የፅዋ ማህበራት </span>
-            </a>
-          </div>
+
           <!-- ጉባኤ ቤት-->
           <div class="menu-items">
             <a class="menu-item" href="#" id="menu-gubae-bet">
               <img class="menu-img" src="../../assets/images/parent.png" alt="dart " />
-              <span class="menu-title">ጉባኤ ቤት</span>
+              <span class="menu-title">ጋብቻ</span>
             </a>
           </div>
-          <!-- ዓመታዊ በዓላት-->
-          <div class="menu-items">
-            <a class="menu-item" href="#" id="menu-ametaw-bealat">
-              <img class="menu-img" src="../../assets/images/calendar.png" alt="dart " />
-              <span class="menu-title">ዓመታዊ በዓላት</span>
-            </a>
-          </div>
-          <!-- መልክቶች-->
-          <div class="menu-items">
-            <a class="menu-item" href="#" id="menu-message">
-              <img class="menu-img" src="../../assets/images/message.png" alt="dart " />
-              <span class="menu-title">መልክቶች</span>
-            </a>
-          </div>
-          <!-- አዲስ ነገሮች -->
-          <div class="menu-items">
-            <a class="menu-item" href="#" id="menu-announcement">
-              <img class="menu-img" src="../../assets/images/announcement.png" alt="Announcements" />
-              <span class="menu-title">አዲስ ነገሮች</span>
-            </a>
-          </div>
+
           <!-- ልዩ ልዩ-->
           <div class="menu-items">
             <a class="menu-item" href="#" id="menu-others">
               <img class="menu-img" src="../../assets/images/attendance.png" alt="dart " />
-              <span class="menu-title">ልዩ ልዩ</span>
+              <span class="menu-title">ክርስትና</span>
             </a>
           </div>
           <span class="menu-header">Other</span>
@@ -157,46 +114,22 @@
             <img src="../../assets/images/announcement.png" alt="Announcements" />
           </div>
           <div class="nav-user">
-            <p class="nav-user-name">አበበ ከበደ</p>
-            <p class="nav-user-role">Admin</p>
+            <p class="nav-user-name" id="user-name">Loading...</p>
+            <p class="nav-user-role">Loading...</p>
           </div>
-          <img class="nav-user-profile" src="/assets//images/avatar.png" alt="" />
+          <img class="nav-user-profile" id="nav-user-profile" src="../../assets/images/avatar.png" alt="" />
+          <input type="file" accept="image/*" hidden id="user-profile">
         </div>
       </div>
-
+      <!-- BREADCRUMB PLACEHOLDER -->
+      <div id="breadcrumb-container"></div>
       <!-- MIDDLE CONTAINER -->
       <div class="middle-container-scroll" id="main-container">
         <!-- Content will be loaded here -->
-
       </div>
     </div>
   </div>
   <script src="../js/shared.js"></script>
-  <!-- <script>
-      const { backupDatabase, restoreDatabase } = require("../js/database");
-    function show(){
-        const child = document.getElementById("dropdown");;
-        child.style.display = "block"
-    }
-      function logout() {
-        localStorage.removeItem("role");
-        window.location.href = "login.html";
-      }
-
-      function backupDatabase() {
-        backupDatabase((filePath) => {
-          alert(`Database backed up to: ${filePath}`);
-        });
-      }
-
-      function restoreDatabase() {
-        const fileInput = document.getElementById("restoreFile");
-        if (fileInput.files.length > 0) {
-          restoreDatabase(fileInput.files[0].path);
-          alert("Database restored successfully");
-        }
-      }
-    </script> -->
+  <script type="module" src="../js/user.js"></script>
 </body>
-
 </html>

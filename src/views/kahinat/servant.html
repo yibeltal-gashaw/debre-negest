@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <table id="servants-table">
+            <thead id="servants-table-header">
+                <tr>
+                    <th>ተ.ቁ</th>
+                    <th>ፎቶ</th>
+                    <th>አለማዊ ስም</th>
+                    <th>የክርስትና ስም</th>
+                    <th>የንስሐ አባት</th>
+                    <th>ስልክ ቁጥር</th>
+                    <th>ስራ</th>
+                    <th>ሙያ</th>
+                    <th>የባለቤት አለማዊ ስም</th>
+                    <th>የባለቤት የክርስትና ስም</th>
+                    <th>ስልክ ቁጥር</th>
+                    <th>ስራ</th>
+                    <th>ሙያ</th>
+                    <th>አድራሻ</th>
+                    <th>ቀጠና</th>
+                    <th>የሰባካ ክፍያ</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="servant-father-data">
+                
+            </tbody>
+        </table>
+        <!-- 🔘 FAB Button for New Servant -->
+        <button id="fab-add-servant" class="fab-add" title="Add Servant">＋</button>
+
+        <!-- 🧾 Modal for Adding Servant -->
+        <div id="add-servant-modal" class="modal">
+            <div class="center">
+                <div class="modal-content mw">
+                    <span class="close-button" id="close-servant-modal">&times;</span>
+                    <h2>አዲስ አገልጋይ መመዝገብ</h2>
+                    <div class="progress-bar">
+                        <div class="step active">1</div>
+                        <div class="step">2</div>
+                        <div class="step">3</div>
+                    </div>
+                    <form id="addServantForm">
+                        <!-- Step 1 -->
+                        <div class="form-step" id="servant-step-1">
+                            <label>አለማዊ ስም:</label><br>
+                            <input type="text" id="servantName" required />
+                            <label>የክርስትና ስም:</label><br>
+                            <input type="text" id="servantCname" required />
+                            <label>የክርስትና አባት:</label><br>
+                            <select name="fathers" id="servantCfather">
+                                
+                            </select>
+                            <label>ስልክ ቁጥር:</label><br>
+                            <input type="tel" id="servantPhone" required />
+                            <label>ስራ:</label><br>
+                            <input type="text" id="servantWork" />
+                            <label>ሙያ:</label><br>
+                            <input type="text" id="servantJob" />
+                            <button type="button" id="next-servant-1">Next</button>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="form-step" id="servant-step-2" style="display:none;">
+                            <label>የባለቤት አለማዊ ስም:</label><br>
+                            <input type="text" id="ownerName" />
+                            <label>የባለቤት የክርስትና ስም:</label><br>
+                            <input type="text" id="ownerCname" />
+                            <label>ስልክ ቁጥር:</label><br>
+                            <input type="tel" id="ownerPhone" />
+                            <label>ስራ:</label><br>
+                            <input type="text" id="ownerWork" />
+                            <label>ሙያ:</label><br>
+                            <input type="text" id="ownerJob" />
+                            <button type="button" id="back-servant-2">Back</button>
+                            <button type="button" id="next-servant-2">Next</button>
+                        </div>
+    
+                        <!-- Step 3 -->
+                        <div class="form-step" id="servant-step-3" style="display:none;">
+                            <label>አድራሻ:</label><br>
+                            <input type="text" id="servantAddress" />
+                            <label>ቀጠና:</label><br>
+                            <input type="text" id="servantRegion" />
+                            <label>የሰባካ ክፍያ:</label><br>
+                            <input type="number" id="servantFee" />
+                            <label>ፎቶ:</label><br>
+                            <input type="file" id="servantPhoto" />
+                            <br><br>
+                            <button type="button" id="back-servant-3">Back</button>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+update marriages set
+wife_christian_name_am = "ወለተ አረጋዊ",
+wife_christian_name_en = "Fikre Silassie",
+wife_dob = 1992-01-15,
+wife_birth_place_am = "አንበሳሜ",
+wife_birth_place_en = "Anbesamie",
+wife_residence_am = "አንበሳሜ",
+wife_residence_en = "Anbesamie",
+wife_mother_name_am = "ያየሽ ገላ",
+wife_mother_name_en = "Yayesh Gela"
+where id = 1;
+
+CREATE TABLE documents(
+    id NUMBER PRIMARY KEY,
+    file TEXT NOT NULL
+)

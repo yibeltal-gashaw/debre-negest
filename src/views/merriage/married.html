@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <title>Add New Couple</title>
+</head>
+
+<body>
+  <div class="container">
+    <table id="couples-table" class="scrollable-table">
+      <thead class="fixed-header">
+        <tr>
+          <th>ተ.ቁ</th>
+          <th>ፎቶ</th>
+          <th>ስም</th>
+          <th>የክርስትና ስም</th>
+        </tr>
+      </thead>
+      <tbody id="couples-data"></tbody>
+    </table>
+    <button id="fab-add-couple" class="fab-add">
+      <img src="../../assets/images/couple-wedding-r.png" alt="Add Couple">
+      <span class="fab-text none">አዲስ ሙሽራ መዝግብ </span>
+    </button>
+    </button>
+    <button id="fab-import-couple" class="fab-add top" title="Import Data">Import Data</button>
+    <!-- Modal Background -->
+    <div id="add-couple-modal" class="modal">
+      <div class="center">
+        <div class="modal-content m">
+          <span class="close-button" id="close-modal">&times;</span>
+          <h2>አዲስ ሙሽሮችን መዝግብ</h2>
+          <div class="progress-bar">
+            <div class="step active">1</div>
+            <div class="step">2</div>
+            <div class="step">3</div>
+            <div class="step">4</div>
+            <div class="step">5</div>
+          </div>
+          <form id="addCoupleForm">
+            <div class="form-step" id="step-1">
+              <!-- Personal Info fields -->
+              <div class="photo-container" ondragover="event.preventDefault()"
+                ondrop="handleDrop(event,'husbandPhotoInput','husbandPhoto')">
+                <div class="photo" id="husbandPhoto" onclick="triggerUpload('husbandPhotoInput')"
+                  style="width: 100%; height: 120px">
+                  <label for="husbandPhotoInput" id="husbandPhotoInfo">የሙሽራ ፎቶ ምረጥ/ጭ
+                  </label>
+                </div>
+                <input id="husbandPhotoInput" type="file" accept="image/*"
+                  onchange="previewImage(event, 'husbandPhoto','husbandPhotoInfo' )" hidden />
+              </div>
+              <label>የባል ስም </label>
+              <input type="text" id="husbandNameAm" placeholder="የባል ስም" />
+              <label>Name of Husband </label>
+              <input type="text" id="husbandNameEn" placeholder="Full Name" />
+              <label>የመፅሐፍ ስም </label>
+              <input type="text" id="husbandChristianNameAm" placeholder="የመፅሐፍ ስም" />
+              <label>Christian Name</label>
+              <input type="text" id="husbandChristianNameEn" placeholder="Christian Name" />
+              <label>Date of Birth</label>
+              <input type="date" id="husbandDob" />
+              <label>የትውልድ ቦታ</label>
+              <input type="text" id="husbandBirthPlaceAm" placeholder="የትውልድ ቦታ" />
+              <label>Place of Birth</label>
+              <input type="text" id="husbandBirthPlaceEn" placeholder="Place of Birth" />
+              <button type="button" id="next-1">Next</button>
+            </div>
+            <div class="form-step" id="step-2" style="display: none">
+              <label>የመኖሪያ አድራሻ </label>
+              <input type="text" id="husbandResidenceAm" placeholder="የመኖሪያ አድራሻ " />
+              <label>Residence</label>
+              <input type="text" id="husbandResidenceEn" placeholder="Residence" />
+              <label>ዜግነት</label>
+              <select name="hNationalityam" id="husbandNationalityAm">
+                <option value="" disabled>-- ዜግነት ምረጥ --</option>
+                <option value="ኢትዮጵያዊ">ኢትዮጵያዊ</option>
+              </select>
+              <label>Nationality</label>
+              <select name="hNationalityen" id="husbandNationalityEn">
+                <option value="" disabled>-- Choose Nationality --</option>
+                <option value="Ethiopian">Ethiopian</option>
+              </select>
+              <label>የአባት ስም</label>
+              <input type="text" id="husbandFatherNameAm" placeholder="የአባት ስም" />
+              <label>Father's Name</label>
+              <input type="text" id="husbandFatherNameEn" placeholder="Father's Name" />
+              <label>የእናት ስም</label>
+              <input type="text" id="husbandMotherNameAm" placeholder="የእናት ስም" />
+              <label>Mother's Name</label>
+              <input type="text" id="husbandMotherNameEn" placeholder="Mother's Name" />
+              <button type="button" id="back-2">Back</button>
+              <button type="button" id="next-2">Next</button>
+            </div>
+            <div class="form-step" id="step-3" style="display: none">
+              <!-- Service Info fields -->
+              <div class="photo-container" ondragover="event.preventDefault()"
+                ondrop="handleDrop(event,'wifePhotoInput','wifePhoto')">
+                <div class="photo" id="wifePhoto" style="width: 100%; height: 120px"
+                  onclick="triggerUpload('wifePhotoInput')">
+                  <label for="husbandPhotoInput" id="wifePhotoInfo">የሙሽሪት ፎቶ ምረጥ/ጭ
+                  </label>
+                </div>
+                <input id="wifePhotoInput" type="file" accept="image/*"
+                  onchange="previewImage(event, 'wifePhoto','wifePhotoInfo')" hidden />
+              </div>
+              <label>የሚስት ስም</label>
+              <input type="text" id="wifeNameAm" placeholder="የሚስት ስም" />
+              <label>Name Of Wife</label>
+              <input type="text" id="wifeNameEn" placeholder="Full Name" />
+              <label>የመፅሐፍ ስም </label>
+              <input type="text" id="wifeChristianNameAm" placeholder="የመፅሐፍ ስም" />
+              <label>Christian Name</label>
+              <input type="text" id="wifeChristianNameEn" placeholder="Christian Name" />
+              <label>Date of Birth</label>
+              <input type="date" id="wifeDob" />
+              <label>የትውልድ ቦታ</label>
+              <input type="text" id="wifeBirthPlaceAm" placeholder="የትውልድ ቦታ" />
+              <label>Place of Birth</label>
+              <input type="text" id="wifeBirthPlaceEn" placeholder="Place of Birth" />
+
+              <button type="button" id="back-3">Back</button>
+              <button type="button" id="next-3">Next</button>
+            </div>
+            <div class="form-step" id="step-4" style="display: none">
+              <label>የመኖሪያ አድራሻ </label>
+              <input type="text" id="wifeResidenceAm" placeholder="የመኖሪያ አድራሻ " />
+              <label>Residence</label>
+              <input type="text" id="wifeResidenceEn" placeholder="Residence" />
+              <label>ዜግነት</label>
+              <select name="wNationalityam" id="wifeNationalityAm">
+                <option value="" disabled>-- ዜግነት ምረጥ --</option>
+                <option value="ኢትዮጵያዊ">ኢትዮጵያዊ</option>
+              </select>
+              <label>Nationality</label>
+              <select name="wNationalityen" id="wifeNationalityEn">
+                <option value="" disabled>-- Choose Nationality --</option>
+                <option value="Ethiopian">Ethiopian</option>
+              </select>
+              <label>የአባት ስም</label>
+              <input type="text" id="wifeFatherNameAm" placeholder="የአባት ስም" />
+              <label>Father's Name</label>
+              <input type="text" id="wifeFatherNameEn" placeholder="Father's Name" />
+              <label>የእናት ስም</label>
+              <input type="text" id="wifeMotherNameAm" placeholder="የእናት ስም" />
+              <label>Mother's Name</label>
+              <input type="text" id="wifeMotherNameEn" placeholder="Mother's Name" />
+              <button type="button" id="back-4">Back</button>
+              <button type="button" id="next-4">Next</button>
+            </div>
+            <div class="form-step" id="step-5" style="display: none">
+              <!-- Additional Info fields -->
+              <label>ጋብቻው የተፈፀመበት ቤተክርስቲያን (ገዳም):</label><br />
+              <select name="church" id="churchName">
+                <option value="" disabled>-- ቤተክርስቲያን ምረጥ --</option>
+                <option value="እማሽንኮሮ ቅዱስ ጊዮርጊስ ገዳም ">
+                  እማሽንኮሮ ቅዱስ ጊዮርጊስ ገዳም
+                </option>
+                <option value="መንበረጸሀይ መድኃኔዓለም ቤተክርስቲያን ">
+                  መንበረጸሀይ መድኃኔዓለም ቤተክርስቲያን
+                </option>
+              </select>
+              <label>ቃል ኪዳኑን የፈፀሙት ካህን (ቆሞስ) :</label><br />
+              <input type="text" id="officiatingPriest" placeholder="ቃል ኪዳኑን የፈፀሙት ካህን" />
+              <label>ጋብቻው የተፈፀመበት ቀን :</label><br />
+              <input type="date" id="marriageDate" />
+              <label>ጋብቻው የተፈፀመበት እለት :</label><br />
+              <select name="day" id="marriageDay">
+                <option value="" disabled>-- ዕለት ምረጥ --</option>
+                <option value="እሑድ">እሑድ</option>
+                <option value="ሰኞ">ሰኞ</option>
+                <option value="ማክሰኞ">ማክሰኞ</option>
+                <option value="ረቡዕ">ረቡዕ</option>
+                <option value="ሀሙስ">ሀሙስ</option>
+                <option value="አርብ">አርብ</option>
+                <option value="ቅዳሜ">አርብ</option>
+              </select>
+              <label for="spiritualFather">የተጋቢዎች የነብስ አባት (አበነብስ)</label>
+              <input type="text" id="spiritualFather" placeholder="የተጋቢዎች የነብስ አባት (አበነብስ)" />
+              <label for="married">የእማኞች ስም</label>
+              <input type="text" name="emagn" id="emagn1" placeholder="እማኝ 1" />
+              <input type="text" name="emagn" id="emagn2" placeholder="እማኝ 2" />
+              <input type="text" name="emagn" id="emagn3" placeholder="እማኝ 3" />
+
+              <button type="button" id="back-5">Back</button>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="import" style="display: none;">
+      <input type="file" id="import-data" accept=".xlsx, .xls" />
+    </div>
+  </div>
+</body>
+
+</html>
