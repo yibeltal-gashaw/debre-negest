@@ -2,6 +2,7 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("api", {
   printDocument: (html) => ipcRenderer.invoke('print-section', html),
+  printCertificate: () => ipcRenderer.send('print-certificate'),
   // users
   updateProfile: (id, photo) => ipcRenderer.invoke("update-profile", id, photo),
   login: (username, password) =>

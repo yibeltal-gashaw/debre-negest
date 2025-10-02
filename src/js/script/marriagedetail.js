@@ -3,7 +3,14 @@ export function init() {
   const section = document.getElementById("info-section");
   const couple = JSON.parse(localStorage.getItem("couples"));
   const long_info = document.getElementById("long-info");
-  const printBtn = document.querySelector(".print-btn");
+
+  const printBtn = document.getElementById("print-certificate-btn");
+  if (printBtn) {
+    printBtn.addEventListener("click", () => {
+      window.api.printCertificate();
+    });
+  }
+
   const photo =
     couple.husband_photo == null
       ? "../../assets/images/avatar.png"
@@ -18,27 +25,6 @@ export function init() {
   document.getElementById(
     "wifePhoto"
   ).style.backgroundImage = `url('${wphoto}')`;
-
-  printBtn.addEventListener("click", () => {
-    window.api.printDocument(section.innerHTML + long_info.innerHTML);
-  });
-  let pdfUrl = null;
-
-  document.getElementById('previewBtn').addEventListener('click', async () => {
-    const sectionHtml = document.getElementById('printSection').outerHTML;
-    const pdfBase64 = await window.api.generatePdf(sectionHtml);
-
-    pdfUrl = `data:application/pdf;base64,${pdfBase64}`;
-    document.getElementById('pdfPreview').src = pdfUrl;
-  });
-
-  document.getElementById('printBtn').addEventListener('click', () => {
-    if (pdfUrl) {
-      // Open native print dialog for the generated PDF
-      const win = window.open(pdfUrl);
-      win.print();
-    }
-  });
 
   section.innerHTML = `
         <div class="info d">

@@ -6,6 +6,9 @@
     "assets/cache/**",
     "assets/*.db"
   ],
+  "patterns": [
+    "!assets/cache/**"
+  ],
   "delay": 500
   }
   

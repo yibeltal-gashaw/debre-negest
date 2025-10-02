@@ -1,8 +1,9 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
+import { fileURLToPath, pathToFileURL } from "url";
 import XLSX from "xlsx"; // default import works with ESM
+import {shell} from "electron";
 import {
   deleteBaby, deleteNwayekdusanItem, deletePriest,
   // NEWAYEKIDUSAN
@@ -14,7 +15,7 @@ import {
   saveMarriage, saveNwayekdusanItem,
   // PRIESTS  
   savePriest,
-  //SERVANTS
+  //SERVANTS    
   saveServants, searchInCouples, totalDeacons, totalItems, totalKahinat, totalKomosat, updateBaby, updateNwayekdusanItem, updatePhoto, updatePriestInfo, updatePriestServiceInfo,
   updatePriestSocialStatus, updateProfile, updateServantInfo
 } from './src/js/database.js';
@@ -36,10 +37,10 @@ try {
 }
 
 // Disable Chromium cache
-app.commandLine.appendSwitch;
+app.commandLine.appendSwitch; 
 
 let mainWindow;
-
+  
 function createWindow() {
   console.log("__dirname:", __dirname);
   console.log("process.cwd():", process.cwd());
@@ -50,7 +51,7 @@ function createWindow() {
     webPreferences: {
       contextIsolation: true,
       enableRemoteModule: false,
-      nodeIntegration: false,
+      nodeIntegration: false, 
       preload: path.join(__dirname, "src/js/preload.js"), // Use preload script for security
     },
   });
@@ -59,19 +60,81 @@ function createWindow() {
     console.error("Failed to load login.html:", err.message);
   });
   initDatabase();
-}
+} 
 
 app.whenReady().then(() => {
   createWindow();
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
-});
+}); 
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
 });
- 
+
+ipcMain.on('print-certificate', (event) => {
+  const uploadsDir = path.join(__dirname, 'uploads');
+  const pdfPath = path.join(uploadsDir, 'certificate.pdf');
+
+  // Ensure the uploads directory exists
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }  
+
+  // Create a new hidden window for printing 
+  const printWindow = new BrowserWindow({
+    show: false,
+    webPreferences: {
+      contextIsolation: true,
+      nodeIntegration: false,
+      preload: path.join(__dirname, "src/js/preload.js")
+    }
+  });
+
+  // Load the certificate page
+  printWindow.loadFile('src/views/merriage/detail.html').then(() => {
+    // Wait for the page to fully render
+    setTimeout(() => {
+      printWindow.webContents.printToPDF({
+        pageSize: 'A4',
+        margins: { marginType: 'default' },
+        printBackground: true,
+        landscape: false
+      })
+      .then(data => {
+        fs.writeFile(pdfPath, data, (error) => {
+          if (error) {
+            console.error('Failed to save PDF:', error);
+            printWindow.close();
+            return;
+          }
+          const previewWindow = new BrowserWindow({
+            width: 900,
+            height: 700,
+            autoHideMenuBar: true,
+            webPreferences: {
+              contextIsolation: true,
+              nodeIntegration: false
+            }
+          });
+          const fileUrl = pathToFileURL(pdfPath).href;
+          previewWindow.loadURL(fileUrl).catch(err => {
+            console.error('Failed to load PDF in preview window:', err);
+          });
+          
+          printWindow.close();
+
+        });
+      })
+      .catch(error => {
+        console.error('Failed to generate PDF:', error);
+        printWindow.close(); 
+      });
+    }, 500); // Wait 0.5 seconds for full rendering
+  });
+});
+
 ipcMain.handle('print-section', async (event, sectionHtml) => {
   const previewWin = new BrowserWindow({ show: false });
   // Wrap section in full HTML document
@@ -130,7 +193,7 @@ ipcMain.handle("save-marriage", async (event, data) => {
       success: false,
       error: err.error || "Failed to load certificates",
     };
-  }
+  }       
 });
 ipcMain.handle("search-marriage", async (_, data) => {
   try {

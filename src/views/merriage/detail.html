@@ -1,75 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Dynamic Marriage Certificate</title>
-    <link rel="stylesheet" href="../css/styles.css" />
-  </head>
 
-  <body>
-    <div class="certificate">
-      <div class="header">
-        <h2>የመዝገብ ቁጥር _________</h2>
-        <h2>
-          "ሰው አባትና እናቱን ይተዋል ከሚስቱም ጋር ይተባበራል <br />
-          ሁለቱም አንድ ሥጋ ይሆናሉ።" ኤፌ 5፡31
-        </h2>
+<head>
+  <meta charset="UTF-8" />
+  <title>Dynamic Marriage Certificate</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../../css/styles.css" />
+    <style>
+      @media print {
+  body {
+    background-color: #fff;
+  }
+
+  .no-print,
+  .navbar,
+  .breadcrumb,
+  .fab-add {
+    display: none !important;
+  }
+
+  body > *:not(.certificate) {
+    display: none !important;
+  }
+  .header{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .certificate {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin: 0;
+    padding: 10px;
+    border: 30px solid transparent;
+    border-image: url('.../../../../../assets/images/border.png') 30 round;
+    box-shadow: none;
+    box-sizing: border-box;
+    transform: scale(1);
+    transform-origin: top left;
+  }
+  .certificate::before{
+    content: "";
+    position: absolute;
+    inset: -30px; /* push ouside by border thickness*/
+    border: 30px solid transparent;
+    background-image: url('../../assets/images/border.png') 30 round;
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+  .photos{
+    margin-top: 0px;
+  }
+  .photo{
+    height: 120px;
+    width: 120px;
+  }
+  .center-card{
+    height: 120px;
+  }
+  .info input {
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    -webkit-print-color-adjust: exact;
+    font-size: 9px;
+  }
+
+  .info label {
+    font-size: 9px;
+  }
+  
+  .header h2 {
+    font-size: 14px;
+  }
+  
+  .header-title {
+    font-size: 20px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .sub-header, .en-sub-header {
+    font-size: 20px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+    </style>
+</head>
+
+<body>
+  <div class="certificate">
+    <div class="header">
+      <h2>የመዝገብ ቁጥር _________</h2>
+      <h2>
+        "ሰው አባትና እናቱን ይተዋል ከሚስቱም ጋር ይተባበራል <br />
+        ሁለቱም አንድ ሥጋ ይሆናሉ።" ኤፌ 5፡31
+      </h2>
+    </div>
+
+    <div class="photos">
+      <div class="photo" id="husbandPhoto">
       </div>
 
-      <div class="photos">
-          <div
-            class="photo"
-            id="husbandPhoto">
-          </div>
-
-        <div>
-          <h2 class="header-title">በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተ ክርስቲያን</h2>
-          <h2 class="sub-header">የጋብቻ የምስክር ወረቀት</h2>
-          <h1 class="en-sub-header">Marriage of Certificate</h1>
-        </div>
-
-          <div
-            class="photo"
-            id="wifePhoto"
-          >
-        </div>
-      </div>
-      <div class="teklil-crowns">
-        <div class="teklil-crown">
-          <img src="../../assets/images/t-crown.png" alt="Teklil crown" />
-        </div>
-        <div class="teklil-crown">
-          <img src="../../assets/images/t-crown.png" alt="Teklil crown" />
-        </div>
-      </div>
-      <div class="info-section" id="info-section">
-        
+      <div class="center-card">
+        <h2 class="header-title">በኢትዮጵያ ኦርቶዶክስ ተዋህዶ ቤተ ክርስቲያን</h2>
+        <h2 class="sub-header">የጋብቻ የምስክር ወረቀት</h2>
+        <h1 class="en-sub-header">Marriage of Certificate</h1>
       </div>
 
-      <div class="footer">
-        <div class="info-section">
+      <div class="photo" id="wifePhoto">
+      </div>
+    </div>
+    <div class="teklil-crowns">
+      <div class="teklil-crown">
+        <img src="H:/project/debre-negest/assets/images/t-crown.png" alt="Teklil crown" id="husbandCrown"/>
+      </div>
+      <div class="teklil-crown">
+        <img src="H:/project/debre-negest/assets/images/t-crown.png" alt="Teklil crown" id="wifeCrown" />
+      </div>
+    </div>
+    <div class="info-section" id="info-section">
+
+    </div>
+
+    <div class="footer">
+      <div class="info-section">
         <div class="info center-card rotate">
           <p>"ይህ ሚስጥር ታላቅ ነው።"</p>
           <p>ኤፌሦን 5፡32</p>
         </div>
         <div class="info long-info" id="long-info">
-          
-      </div>
+
+        </div>
       </div>
 
-        <div class="signature">
-          <p>የቤተክርስቲያኑ (ገዳሙ) አስተዳዳሪ</p>
-          <div><label>ስም</label><input type="text"></div>
-          <div><label>ፊርማ ________________</label></div>
+      <div class="signature">
+        <p>የቤተክርስቲያኑ (ገዳሙ) አስተዳዳሪ</p>
+        <div><label>ስም ________________</label></div>
+        <div><label>ፊርማ ________________</label></div>
       </div>
     </div>
 
-    <button class="print-btn">
-      Print Certificate
-    </button>
-    <button id="previewBtn">Preview Document</button>
-<button id="printBtn">Print Document</button>
-    <!-- Show PDF preview -->
-<iframe id="pdfPreview" width="100%" height="600"></iframe>
-  </body>
+    <div class="no-print" style="text-align: center; margin-top: 20px;">
+      <button id="print-certificate-btn" class="btn">Print Certificate</button>
+    </div>
+
+    <script type="module">
+      import { init } from '../../js/script/marriagedetail.js';
+      // Call init immediately or wait for DOMContentLoaded
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+          init();
+        });
+      } else {
+        // DOM is already loaded
+        init();
+      }
+    </script>
+</body>
+
 </html>

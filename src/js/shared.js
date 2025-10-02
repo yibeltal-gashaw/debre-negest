@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "menu-setting": "setting.html",
   };
 
+  document.getElementById('darkModeToggle').addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    console.log("dark mode toggle");
+  });
   // Load home.html by default
   loadPage("home.html");
 

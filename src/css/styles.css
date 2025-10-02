@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -639,6 +641,8 @@ button[type="submit"]:hover ,button:hover{
   border-image: url('../../assets/images/border.png') 30 round; 
   background-color: white;
   position: relative;
+  margin-top: 40px;
+  margin-bottom: 40px;
   /* border-radius: 16px; */
 }
 
@@ -762,7 +766,8 @@ button[type="submit"]:hover ,button:hover{
 .signature {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  align-items: flex-start;
+
 }
 .signature label{margin-top: 5px;}
 .signature div{display: flex;}
