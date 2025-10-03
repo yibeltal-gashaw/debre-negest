@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Debre Negest</title>
+    <link rel="stylesheet" href="../../dist/styles.css" />
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      }
+
+      .welcome-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+
+      .section-card {
+        background: rgba(228, 228, 226, 0.911);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .service-card {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.3s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen">
+    <div class="welcome-card min-h-screen w-full flex flex-col mb-20">
+        <!-- Hero Section -->
+        <div
+          class="flex-1 flex flex-col items-center justify-center p-8 md:p-20 text-center relative"
+        >
+          <!-- Animated Background Elements -->
+          <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div
+              class="absolute top-20 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl animate-pulse"
+            ></div>
+            <div
+              class="absolute bottom-20 right-10 w-40 h-40 bg-purple-400/10 rounded-full blur-3xl animate-pulse delay-1000"
+            ></div>
+          </div>
+  
+          <!-- Enhanced Church Icon -->
+          <div class="relative mb-12 group">
+            <div
+              class="absolute -inset-4 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+            ></div>
+            <div
+              class="relative w-28 h-28 md:w-32 md:h-32 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 rounded-full flex items-center justify-center text-white text-5xl md:text-6xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 border-4 border-white/20"
+            >
+              <img
+                class="size-8 rounded-full"
+                src="../../assets/images/debre_negest.png"
+                alt="church"
+                srcset=""
+              />
+            </div>
+            <!-- Subtle ring animation -->
+            <div
+              class="absolute inset-0 rounded-full border-2 border-blue-400/30 animate-ping"
+            ></div>
+          </div>
+  
+          <!-- Enhanced Main Title -->
+          <div class="relative mb-8">
+            <h1
+              class="text-7xl md:text-8xl lg:text-9xl font-black text-transparent bg-gradient-to-r from-blue-900 via-purple-800 to-indigo-900 bg-clip-text mb-2 leading-none tracking-tight animate-fade-in"
+            >
+              Debre Negest
+            </h1>
+            <!-- Subtitle -->
+            <p
+              class="text-lg md:text-xl text-gray-600 font-light tracking-wider uppercase animate-fade-in delay-200"
+            >
+              Church Management System
+            </p>
+          </div>
+  
+          <!-- Enhanced Divider -->
+          <div class="relative mb-12 w-40 md:w-48">
+            <div
+              class="h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent rounded-full shadow-lg"
+            ></div>
+            <div
+              class="absolute inset-0 h-1 bg-gradient-to-r from-transparent via-purple-600 to-transparent rounded-full animate-pulse"
+            ></div>
+          </div>
+  
+          <!-- Enhanced Description -->
+          <div class="relative mb-16 max-w-5xl animate-fade-in delay-300">
+            <p
+              class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-4xl mx-auto"
+            >
+              <span class="font-medium text-gray-800"
+                >Designed for Orthodox Tewahedo churches</span
+              >
+              — Experience powerful administration tools that honor sacred
+              traditions while embracing modern efficiency and innovation.
+            </p>
+          </div>
+   
+          <!-- Animated Get Started Button -->
+          <div id="get-started-button" class="flex justify-center mb-16 animate-fade-in delay-700">
+            <div class="relative group">
+              <!-- Button glow effect -->
+              <div
+                class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+              ></div>
+  
+              <!-- Main button -->
+               <a href="login.html"></a>
+              <button
+              
+                class="relative px-8 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 text-white font-semibold text-lg rounded-xl shadow-xl transform transition-all duration-300 ease-out group-hover:scale-105 group-hover:shadow-2xl group-active:scale-95"
+              >
+                <!-- Button content -->
+                <div class="flex items-center space-x-3">
+                  <!-- Icon -->
+                  <div
+                    class="w-5 h-5 transform group-hover:rotate-12 transition-transform duration-300"
+                  >
+                    <svg
+                      class="w-full h-full"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+  
+                  <!-- Text -->
+                  <span class="tracking-wide">Get Started</span>
+  
+                  <!-- Animated dots -->
+                  <div class="flex space-x-1">
+                    <div
+                      class="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce"
+                    ></div>
+                    <div
+                      class="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce delay-100"
+                    ></div>
+                    <div
+                      class="w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce delay-200"
+                    ></div>
+                  </div>
+                </div>
+  
+                <!-- Shimmer effect overlay -->
+                <div
+                  class="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-500"
+                ></div>
+              </button>
+  
+              <!-- Ripple effect on click -->
+              <div
+                class="absolute inset-0 rounded-xl bg-white/10 opacity-0 group-active:opacity-100 group-active:animate-ping transition-opacity duration-75"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- Footer -->
+    <footer class="px-8 md:px-16 pb-16">
+      <div
+        class="text-center bg-white/40 backdrop-blur-sm rounded-2xl p-8 shadow-lg"
+      >
+          <p class="text-sm text-gray-500">
+            Debre Negest Church Management System v1.0
+          </p>
+        </div>
+      </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("DOMContentLoaded");
+            
+            // More specific selector - target the button by class or ID
+            const button = document.getElementById("get-started-button"); // Add a class to your button
+            
+            if (button) {
+                console.log("Button found");
+                button.addEventListener("click", function (event) {
+                    event.preventDefault(); // Prevent any default button behavior
+                    console.log("Button clicked, navigating...");
+                    window.location.href = "login.html";
+                });
+            } else {
+                console.error("Button not found! Check your selector.");
+            }
+        });
+    </script>
+  </body>
+</html>
