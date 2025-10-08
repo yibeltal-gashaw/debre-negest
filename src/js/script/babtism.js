@@ -42,7 +42,8 @@ export function init() {
 
     // Function to open the modal
     const openModal = () => {
-        modal.style.display = 'block';
+        // modal.style.display = 'block';
+        window.api.printCertificate();
     };
 
     // Function to close the modal

@@ -37,24 +37,4 @@ export function loadUserInfo() {
 // Initialize user info when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
   loadUserInfo();
-
-  const profile = document.getElementById("nav-user-profile");
-  const input = document.getElementById("user-profile");
-  profile.addEventListener("click", () => {
-    input.click();
-  });
-
-  input.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        e.preventDefault();
-        base64ProfilePic = e.target.result;
-        profile.src = base64ProfilePic;
-        window.api.updateProfile(id, base64ProfilePic);
-      };
-      reader.readAsDataURL(file);
-    }
-  });
 });

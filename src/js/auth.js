@@ -1,34 +1,64 @@
-// function createUser(username, password, role, callback) {
-//   bcrypt.hash(password, 10, (err, hash) => {
-//     db.run(
-//       "INSERT INTO users (username, password, role) VALUES (?, ?, ?)",
-//       [username, hash, role],
-//       callback
-//     );
-//   });
-// }
 
 export function userLogin(event) {
   event.preventDefault(); // prevent page reload
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
   const error = document.getElementById("error");
+  const button = document.getElementById('login-btn');
+  const btnText = button.querySelector('.btn-text');
+  const spinner = button.querySelector('.loading-spinner');
+
+  // Show loading state
+  button.disabled = true;
+  btnText.style.display = 'none';
+  spinner.style.display = 'inline-block';
 
   if (!username || !password) {
     alert("Please fill in all fields.");
     return;
   }
 
-  window.api.login(username, password).then((result) => {
-    if (result.success) {
-      getUsers();
-      localStorage.setItem("role", result.role);
-      localStorage.setItem("username", username);
-      window.location.href = "index.html";
-    } else {
-      error.style.display = "block";
-    }
-  });
+  setTimeout(() => {
+    window.api.login(username, password).then((result) => {
+      if (result.success) {
+        getUsers();
+        localStorage.setItem("role", result.role);
+        localStorage.setItem("username", username);
+        window.location.href = "index.html";
+      } else {
+        error.style.display = "block";
+        button.disabled = false;
+        btnText.style.display = 'inline-block';
+        spinner.style.display = 'none';
+      }
+    });
+  }, 1000);
+
+  const style = document.createElement('style');
+  style.textContent = `
+  #login-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  #login-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .loading-spinner svg {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+`;
+  document.head.appendChild(style);
 
 }
 

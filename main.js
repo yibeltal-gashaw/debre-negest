@@ -3,7 +3,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath, pathToFileURL } from "url";
 import XLSX from "xlsx"; // default import works with ESM
-import { shell } from "electron";
 import {
   deleteBaby,
   deleteNwayekdusanItem,
@@ -44,7 +43,7 @@ import {
 // Setup __dirname workaround for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+   
 // Set custom cache directory
 const cachePath = path.join(__dirname, "assets/cache");
 try {
@@ -76,14 +75,14 @@ function createWindow() {
       nodeIntegration: false,
       preload: path.join(__dirname, "src/js/preload.js"), // Use preload script for security
     },
-  }); 
+  });  
 
-  mainWindow.loadFile("src/views/welcome.html").catch((err) => {
+  mainWindow.loadFile("src/views/index.html").catch((err) => {
     console.error("Failed to load login.html:", err.message);
   });
   initDatabase();
 }
-
+ 
 app.whenReady().then(() => {
   createWindow();
   app.on("activate", () => {
@@ -339,9 +338,9 @@ ipcMain.handle("delete-nwayekdusan-item", async (event, id) => {
   });
 });
 
-ipcMain.handle("total-items", async (_, tab) => {
+ipcMain.handle("total-items", async (_, tab, role) => {
   try {
-    const result = totalItems(tab);
+    const result = await totalItems(tab, role);
     return result;
   } catch (error) {
     return {

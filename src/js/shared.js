@@ -19,10 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     "menu-setting": "setting.html",
   };
 
-  document.getElementById('darkModeToggle').addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    console.log("dark mode toggle");
-  });
   // Load home.html by default
   loadPage("home.html");
 
@@ -81,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         if (page.includes("sundayschool/tsfetbet.html")) {
           import("../js/script/sundayschool.js").then((module) => {
-            module.init(loadPage);
+            module.executives();
           });
         }
         if (page.includes("merriage/married.html")) {
@@ -113,6 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (page.includes("others.html")) {
           import("../js/script/babtism.js").then((module) => {
+            module.init(loadPage);
+          });;
+        }
+        if (page.includes("setting.html")) {
+          import("../js/script/setting.js").then((module) => {
             module.init(loadPage);
           });;
         }

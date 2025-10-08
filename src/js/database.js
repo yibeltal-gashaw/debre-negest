@@ -460,16 +460,28 @@ export function deleteNwayekdusanItem(id, callback) {
     else callback(true);
   });
 }
-export function totalItems(name, callback) {
-  db.all(`SELECT COUNT(*) FROM ${name}`),
-    (err, items) => {
+
+export function totalItems(name, role = null) {
+  return new Promise((resolve, reject) => {
+    let query = `SELECT COUNT(*) as count FROM ${name}`;
+    let params = [];
+    
+    if (role) {
+      query += ` WHERE role = ?`;
+      params.push(role);
+    }
+    
+    db.all(query, params, (err, rows) => {
       if (err) {
-        callback(false, err.message);
+        reject({ success: false, error: err.message });
       } else {
-        callback(true, items);
+        const count = rows[0]?.count || 0;
+        resolve({ success: true, count });
       }
-    };
+    });
+  });
 }
+
 //  PRIEST
 export function savePriest(data, callback) {
   const {
@@ -724,7 +736,7 @@ export function saveMarriage(data) {
               wife_nationality_am, wife_nationality_en, wife_father_name_am, wife_father_name_en,
               wife_mother_name_am, wife_mother_name_en,
               church_name, officiating_priest, marriage_date, marriage_day, spiritual_father,
-              emagn,emagn2,emagn3,
+              emagn1,emagn2,emagn3,
               husband_photo, wife_photo
           ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
       `;

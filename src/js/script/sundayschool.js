@@ -1,3 +1,5 @@
+
+
 export function init() {
     const homepageMap = {
         "tsfetbet": "sundayschool/tsfetbet.html",
@@ -15,47 +17,78 @@ export function init() {
         }
     });
 
-    var btn = document.getElementById("fab-add-priest-left");
-    var addKiflat = document.getElementById("fab-add-priest");
-    var modal = document.getElementById("sira-asfetsami-modal");
-    var closebtn = document.getElementById("close-modal");
-    var kiflatModal = document.getElementById("kiflat-modal");
-    var newKiflat = document.getElementById("add-modal");
-    const tableBody = document.getElementById("kiflat-data");
-    const row = document.createElement("tr");
-
-    if(!tableBody) return;
-
-    btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        modal.style.display = "block";
-    });
-
-    closebtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        modal.style.display = "none";
-        kiflatModal.style.display = "none";
-    });
-    addKiflat.addEventListener("click", function(e){
-        e.preventDefault()
-        kiflatModal.style.display = "block";
-    });
-    newKiflat.addEventListener("click", function(e){
-        e.preventDefault()
-        row.innerHTML = `
-            <td><input type="text" id="kiflatName" required /></td>
-            <td><input type="text" id="kiflatRepresetative" required /></td>
-            <td><input type="text" id="kiflatPhone" required /></td>
-            <td><input type="tel" id="kiflatAge" required /></td>
-            <td><input type="text" id="kiflatName" required /></td>
-            <td><input type="text" id="kiflatRepresetative" required /></td>
-            <td><input type="text" id="kiflatPhone" required /></td>
-            <td><input type="tel" id="kiflatAge" required /></td>
-            <td><input type="tel" id="kiflatAge" required /></td>
-            
-        `;
-        tableBody.appendChild(row);
-    })
-    
 }
 
+export function executives() {
+    var btn = document.getElementById("fab-add-executives");
+    var modal = document.getElementById("new-executive-model");
+    var closebtn = document.getElementById("close-modal");
+    console.log(btn, modal);
+
+    if (btn) {
+        btn.onclick = () => {
+            modal.style.display = "block"
+        }
+    }
+    closebtn.onclick = () => {
+        modal.style.display = "none"
+    }
+    // Close modal on clicking outside modal-content
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    document.getElementById('next-1').addEventListener('click', function(){
+        document.getElementById('step-1').style.display = 'none';
+        document.getElementById('step-2').style.display = 'block';
+    })
+    document.getElementById('back-1').addEventListener('click', function(){
+        document.getElementById('step-2').style.display = 'none';
+        document.getElementById('step-1').style.display = 'block';
+    })
+
+    // Drag and Drop functionality for photo upload
+const photoDropArea = document.getElementById('photo-drop-area');
+const photoInput = document.getElementById('executivePhoto');
+
+if (photoDropArea && photoInput) {
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        photoDropArea.addEventListener(eventName, preventDefaults, false);
+        document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        photoDropArea.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        photoDropArea.addEventListener(eventName, unhighlight, false);
+    });
+
+    // Handle dropped files
+    photoDropArea.addEventListener('drop', handleDrop, false);
+    
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    function highlight() {
+        photoDropArea.classList.add('drag-over');
+    }
+
+    function unhighlight() {
+        photoDropArea.classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        photoInput.files = files;
+    }
+}
+}

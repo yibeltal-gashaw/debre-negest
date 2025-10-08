@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../dist/styles.css">
     <link rel="stylesheet" href="../css/app.css">
 </head>
 
@@ -37,7 +38,10 @@
             </tbody>
         </table>
         <!-- 🔘 FAB Button for New Servant -->
-        <button id="fab-add-servant" class="fab-add" title="Add Servant">＋</button>
+        <button id="fab-add-servant" class="fab-add" title="Add Servant">
+            <img src="../../assets/images/servant.png" alt="Add Couple">
+            <span class="fab-text none">አዲስ አገልጋይ መመዝገብ</span>
+        </button>
 
         <!-- 🧾 Modal for Adding Servant -->
         <div id="add-servant-modal" class="modal">
@@ -67,7 +71,7 @@
                             <input type="text" id="servantWork" />
                             <label>ሙያ:</label><br>
                             <input type="text" id="servantJob" />
-                            <button type="button" id="next-servant-1">Next</button>
+                            <button class="w-full" type="button" id="next-servant-1">Next</button>
                         </div>
                         <!-- Step 2 -->
                         <div class="form-step" id="servant-step-2" style="display:none;">
@@ -81,8 +85,8 @@
                             <input type="text" id="ownerWork" />
                             <label>ሙያ:</label><br>
                             <input type="text" id="ownerJob" />
-                            <button type="button" id="back-servant-2">Back</button>
-                            <button type="button" id="next-servant-2">Next</button>
+                            <button class="w-28" type="button" id="back-servant-2">Back</button>
+                            <button class="w-28" type="button" id="next-servant-2">Next</button>
                         </div>
     
                         <!-- Step 3 -->

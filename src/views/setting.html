@@ -1,46 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Settings</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings - Debre Negest</title>
+  <link rel="stylesheet" href="../css/app.css" />
+  <style>
+    /* Additional styles for settings page */
+    .settings-wrapper {
+      display: flex;
+      max-width: 1200px;
+      margin: 10px;
+      gap: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .settings-sidebar {
+      width: 250px;
+      background: #f8f9fa;
+      border-right: 1px solid #e0e0e0;
+      padding: 20px 0;
+    }
+
+    .settings-sidebar h3 {
+      padding: 0 20px;
+      margin: 0 0 20px 0;
+      color: #333;
+      font-size: 18px;
+    }
+
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-menu li {
+      margin: 0;
+    }
+
+    .sidebar-menu a {
+      display: block;
+      padding: 12px 20px;
+      color: #555;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.3s;
+    }
+
+    .sidebar-menu a:hover {
+      background: #e9ecef;
+      color: #566e8f;
+    }
+
+    .sidebar-menu a.active {
+      background: #4a6ea9;
+      color: white;
+      border-left-color: #357ab8;
+    }
+
+    .settings-container {
+      flex: 1;
+      margin: 0;
+      padding: 30px;
+      max-width: none;
+    }
+
+    .settings-section {
+      display: none;
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+    }
+
+    .settings-section.active {
+      display: block;
+    }
+
+    .settings-section h3 {
+      margin-top: 0;
+      color: #566e8f;
+      border-bottom: 2px solid #4a6ea9;
+      padding-bottom: 10px;
+      margin-bottom: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+
+    .avatar-container {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .avatar-edit-icon {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #4a6ea9;
+      color: white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      transition: background-color 0.3s;
+    }
+
+    .avatar-edit-icon:hover {
+      background: #357ab8;
+    }
+
+    .avatar-preview {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #4a6ea9;
+      object-fit: cover;
+    }
+
+    .btn {
+      background: #4a6ea9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #357ab8;
+    }
+
+    .btn-secondary {
+      background: #ccc;
+      color: #333;
+    }
+
+    .btn-secondary:hover {
+      background: #bbb;
+    }
+
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toggle-switch {
+      position: relative;
+      width: 50px;
+      height: 25px;
+      background: #ccc;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: #4a90e2;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 21px;
+      height: 21px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .avatar-edit-icon:hover {
+        background: #357ab8;
+      }
+
+      .permissions-checkboxes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin-top: 10px;
+      }
+
+      .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: normal;
+        cursor: pointer;
+      }
+
+      .checkbox-label input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
+        accent-color: #4a6ea9;
+      }
+
+    .toggle-switch.active .toggle-slider {
+      transform: translateX(25px);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .settings-wrapper {
+        flex-direction: column;
+        margin: 20px;
+      }
+
+      .settings-sidebar {
+        width: 100%;
+        order: 2;
+      }
+
+      .settings-container {
+        order: 1;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="settings-container">
-    <h2>Settings</h2>
-
-    <div class="form-group">
-      <label for="username">Profile Name</label>
-      <input type="text" id="username" placeholder="Enter your name">
+  <div class="settings-wrapper">
+    <div class="settings-sidebar">
+      <h3>Settings</h3>
+      <ul class="sidebar-menu">
+        <li><a href="#" class="active">Profile</a></li>
+        <li><a href="#">Create User</a></li>
+        <li><a href="#">Create Role</a></li>
+        <li><a href="#">Theme</a></li>
+      </ul>
     </div>
+    <div class="settings-container">
+      <!-- Profile Section -->
+      <div class="settings-section active">
+        <h3>Profile Settings</h3>
+        <div class="avatar-container">
+          <img id="avatar-preview" class="avatar-preview" src="../../assets/images/avatar.png" alt="Avatar" />
+          <div class="avatar-edit-icon" onclick="document.getElementById('avatar-input').click()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+          </div>
+          <input type="file" id="avatar-input" accept="image/*" style="display: none;" onchange="previewAvatar(event)">
+        </div>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" disabled  />
+        </div>
+        <div class="form-group">
+          <label for="current-password">Current Password</label>
+          <input type="password" id="current-password" placeholder="Enter current password" />
+        </div>
+        <div class="form-group">
+          <label for="new-password">New Password</label>
+          <input type="password" id="new-password" placeholder="Enter new password" />
+        </div>
+        <button class="btn" onclick="changePassword()">
+          Change Password
+        </button>
+      </div>
 
-    <div class="form-group">
-      <label for="language">Language</label>
-      <select id="language">
-        <option value="en">English</option>
-        <option value="am">Amharic</option>
-        <option value="ti">Tigrigna</option>
-      </select>
-    </div>
+      <!-- Create User Section -->
+      <div class="settings-section">
+        <h3>Create New User</h3>
+        <div class="form-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" id="full-name" placeholder="Enter full name" />
+        </div>
+        <div class="form-group">
+          <label for="new-username">Username</label>
+          <input type="text" id="new-username" placeholder="Enter username" />
+        </div>
+        <div class="form-group">
+          <label for="new-password-user">Password</label>
+          <input type="password" id="new-password-user" placeholder="Enter password" />
+        </div>
+        <button class="btn" onclick="createUser()">Create User</button>
+      </div>
 
-    <div class="form-group toggle">
-      <label for="darkmode">Dark Mode</label>
-      <input type="checkbox" id="darkmode">
-    </div>
+      <!-- Role Management Section -->
+      <div class="settings-section">
+        <h3>Role Management</h3>
+        <div class="form-group">
+          <label for="new-role-name">New Role Name</label>
+          <input type="text" id="new-role-name" placeholder="Enter role name (e.g., ካህን, ዲያቆን)" />
+        </div>
+        <div class="form-group">
+          <label for="new-role-description">Role Description</label>
+          <input type="text" id="new-role-description" placeholder="Enter role description" />
+        </div>
+        <div class="form-group">
+          <label for="new-role-permissions">Permissions</label>
+          <div class="permissions-checkboxes">
+            <label class="checkbox-label">
+              <input type="checkbox" id="perm-read" checked /> Read
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="perm-write" /> Write
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="perm-delete" /> Delete
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="perm-admin" /> Admin
+            </label>
+          </div>
+        </div>
+        <button class="btn" onclick="createRole()">Create Role</button>
+      </div>
 
-    <div class="form-group">
-      <label for="notifications">Notifications</label>
-      <select id="notifications">
-        <option value="all">All</option>
-        <option value="important">Only Important</option>
-        <option value="none">None</option>
-      </select>
-    </div>
+      <!-- Theme Section -->
+      <div class="settings-section">
+        <h3>Theme Settings</h3>
+        <div class="theme-toggle">
+          <span>Light Mode</span>
+          <div class="toggle-switch" id="theme-toggle" onclick="toggleTheme()">
+            <div class="toggle-slider"></div>
+          </div>
+          <span>Dark Mode</span>
+        </div>
+      </div>
 
-    <div class="actions">
-      <button class="btn btn-cancel">Cancel</button>
-      <button class="btn btn-save">Save</button>
     </div>
   </div>
 </body>
+
 </html>

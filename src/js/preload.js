@@ -18,7 +18,7 @@ contextBridge.exposeInMainWorld("api", {
   deleteNwayekdusanItem: (id) =>
     ipcRenderer.invoke("delete-nwayekdusan-item", id),
   savePriest: (priestData) => ipcRenderer.invoke("save-priest", priestData),
-  totalItems: (tab) => ipcRenderer.invoke("total-items",tab),
+  totalItems: (tab, role) => ipcRenderer.invoke("total-items",tab, role),
 
   // priests
   getAllPriest: () => ipcRenderer.invoke("get-priest"),
